@@ -5,30 +5,30 @@ provider "aws" {
 }
 
 resource "aws_route53_zone" "primary" {
-  name = "jandomanski.com"
+  name = "${var.domain_name}"
 }
 
 resource "aws_route53_record" "cname" {
   zone_id = "${aws_route53_zone.primary.zone_id}"
-  name    = "*.jandomanski.com"
+  name    = "*.${var.domain_name}"
   type    = "CNAME"
   ttl     = "300"
-  records = ["jandomanski.com"]
+  records = ["${var.domain_name}"]
 }
 
 resource "aws_route53_record" "www" {
   zone_id = "${aws_route53_zone.primary.zone_id}"
-  name    = "jandomanski.com"
+  name    = "${var.domain_name}"
   type    = "A"
   ttl     = "300"
   records = [
-    "${var.arecords[0]}",
-    "${var.arecords[1]}",
-    "${var.arecords[2]}",
-    "${var.arecords[3]}",
+    "${var.a_records[0]}",
+    "${var.a_records[1]}",
+    "${var.a_records[2]}",
+    "${var.a_records[3]}",
   ]
 }
 
 output "nameservers" {
-  value = "${aws_route53_record.www.records}"
+  value = "${aws_route53_zone.primary.name_servers}"
 }

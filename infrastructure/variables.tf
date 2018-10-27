@@ -8,4 +8,6 @@ variable "amis" {
   type = "map"
 }
 
-variable "arecords" { type = "list" }
+variable "a_records" { type = "list" }
+
+variable "domain_name" {}
