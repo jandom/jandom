@@ -1,5 +1,5 @@
-access_key = "AKIAIVZGAEJK4AALU2DA"
-secret_key = "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"
+access_key = "AKIAUIA2OR6D6TIYJYRJ"
+secret_key = "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"
 
 amis = {
   "us-east-1" = "ami-b374d5a5"
