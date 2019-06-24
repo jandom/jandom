@@ -11,7 +11,7 @@ module "hosted_zone" {
 }
 
 terraform {
-  backend "s3" { # will handle correctly multiple workspaces
+  backend "s3" { # https://medium.com/@mitesh_shamra/state-management-with-terraform-9f13497e54cf
     bucket         = "jandomanski-homepage"
     region         = "eu-west-1"
     profile        = "jandom-personal"
@@ -20,12 +20,12 @@ terraform {
   }
 }
 
-
-data "terraform_remote_state" "network" {
-  backend = "s3" # bucket needs to be created manually
-  config {
+data "terraform_remote_state" "remote" {
+  backend = "s3"
+  config = { # remote state https://stackoverflow.com/questions/50820850/terraform-s3-backend-vs-terraform-remote-state
     bucket = "jandomanski-homepage"
     key    = "terraform.tfstate"
-    region = "eu-west-1" # make sure terraform has permissions
+    region = "eu-west-1"
+    profile = "jandom-personal"
   }
 }
