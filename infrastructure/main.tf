@@ -29,3 +29,7 @@ data "terraform_remote_state" "remote" {
     profile = "jandom-personal"
   }
 }
+
+output "blah" {
+  value = "${module.hosted_zone.nameservers}"
+}
