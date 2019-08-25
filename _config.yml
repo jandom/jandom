@@ -30,7 +30,7 @@ twitter_username: jandom_random
 github_username:  jandom
 
 # Build settings
-# theme: minima
+theme: minima
 plugins:
   - jekyll-feed
 
