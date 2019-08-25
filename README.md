@@ -11,3 +11,8 @@ A working ruby version that's higher than ubuntu's default
 Setup jekyll on ubuntu following instructions on
 
   https://jekyllrb.com/docs/installation/ubuntu/
+
+
+## Getting started
+
+  jekyll new homepage
