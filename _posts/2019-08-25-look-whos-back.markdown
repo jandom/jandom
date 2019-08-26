@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Look who's back"
-date:   2019-08-25 21:23:22 +0100
+date:   2019-08-25 00:00:00 +0100
 categories: jekyll update
 ---
 
@@ -19,4 +19,4 @@ Specific things that are super cool that we've done recently, and would be lovel
 - Exploration in the "Infrastructure as code" garden, jumping between Terraform, CloudFormation and Pulumi
 - ServiceWorkers and how they can be kept up-to-date in modern React single page apps (SPAs)
 
-These will go into the 'drafts' directory on GitHub so you can follow the progress... or lack of thereof!
+These will go into the `_drafts` directory on GitHub so you can follow the progress... or lack of thereof!
