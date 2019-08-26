@@ -9,8 +9,7 @@ layout: homepage
   <section id="one">
 
     <header class="major">
-      <h2>Introduction<br />
-      – a brief bio</h2>
+      <h2>Introduction</h2>
     </header>
 
     <p>Starting from 2017, I have been a co-founder and CTO at Labstep. Labstep set out to make scientists more productive and creative. So far this involved building a software tool at <a href="//www.labstep.com">www.labstep.com</a>.</p>
