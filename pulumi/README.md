@@ -122,3 +122,13 @@ using the AWS CLI.
 ```bash
 aws s3 sync ./www/ s3://example-bucket/ --acl public-read
 ```
+
+## Misc notes
+
+This blog post has some a nice cheat-sheet
+
+http://leebriggs.co.uk/blog/2018/09/20/using-pulumi-for-k8s-config-mgmt.html
+
+Good general overview of how we got to where we are with infrastructure as code
+
+https://medium.com/driven-by-code/the-terrors-and-joys-of-terraform-88bbd1aa4359
