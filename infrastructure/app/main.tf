@@ -4,11 +4,6 @@ provider "aws" {
   region     = "${var.region}"
 }
 
-module "frontend_production" {
-   source = "../modules/frontend"
-   bucket_name = "production.jandomanski.com"
-}
-
 terraform {
   backend "s3" { # https://medium.com/@mitesh_shamra/state-management-with-terraform-9f13497e54cf
     bucket         = "jandomanski-homepage"
@@ -27,4 +22,14 @@ data "terraform_remote_state" "base" {
     region = "eu-west-1"
     profile = "jandom-personal"
   }
+}
+
+module "frontend_production" {
+   source = "../modules/frontend"
+   bucket_name = "production.jandomanski.com"
+   zone_id = "${data.terraform_remote_state.base.outputs.hosted_zone.zone_id}"
+}
+
+output "blah" {
+  value = "${module.frontend_production}"
 }

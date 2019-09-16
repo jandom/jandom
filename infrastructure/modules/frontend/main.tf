@@ -9,17 +9,17 @@ resource "aws_s3_bucket" "bucket" {
 }
 
 resource "aws_route53_record" "www" {
-  zone_id = "${aws_route53_zone.primary.zone_id}"
-  name    = "jandomanski.com"
+  zone_id = "${var.zone_id}"
+  name    = "production.jandomanski.com"
   type    = "A"
 
   alias {
-    name                   = "${aws_elb.main.dns_name}"
-    zone_id                = "${aws_elb.main.zone_id}"
+    name                   = "${aws_s3_bucket.bucket.website_endpoint}"
+    zone_id                = "${aws_s3_bucket.bucket.hosted_zone_id}"
     evaluate_target_health = true
   }
 }
 
 output "blah" {
-  value = "${data.terraform_remote_state.base}"
+  value = "${aws_s3_bucket.bucket}"
 }
