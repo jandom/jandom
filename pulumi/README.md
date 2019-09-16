@@ -120,5 +120,5 @@ of the S3 bucket, and no longer manage their contents. Then do a bulk upload out
 using the AWS CLI.
 
 ```bash
-aws s3 sync ./www/ s3://example-bucket/
+aws s3 sync ./www/ s3://example-bucket/ --acl public-read
 ```
