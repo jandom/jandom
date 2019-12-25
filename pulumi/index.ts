@@ -143,15 +143,15 @@ const distributionArgs: aws.cloudfront.DistributionArgs = {
         targetOriginId: contentBucket.arn,
 
         viewerProtocolPolicy: "redirect-to-https",
-        allowedMethods: ["GET", "HEAD", "OPTIONS"],
-        cachedMethods: ["GET", "HEAD", "OPTIONS"],
+        allowedMethods: ["GET", "HEAD"],
+        cachedMethods: ["GET", "HEAD"],
 
         forwardedValues: {
             cookies: { forward: "none" },
             queryString: false,
         },
 
-        minTtl: 0,
+        minTtl: 360,
         defaultTtl: tenMinutes,
         maxTtl: tenMinutes,
     },
