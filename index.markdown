@@ -30,6 +30,19 @@ layout: homepage
       <div class="12u 12u$(xsmall)">
         <ul>
           <li>
+            E Yamamoto, J Domański, FB Naughton, RB Best, AC Kalli, PJ Stansfeld, MSP Sansom,
+            <i>Multiple Lipid Binding Sites Determine the Affinity of PH Domains for Phosphoinositide-Containing Membranes</i>
+          </li>
+          <li>
+            Richard J Gowers, Max Linke, Jonathan Barnoud, Tyler John Edward Reddy, Manuel N Melo, Sean L Seyler, Jan Domanski, David L Dotson, Sébastien Buchoux, Ian M Kenney, Oliver Beckstein,
+            <i>MDAnalysis: a Python package for the rapid analysis of molecular dynamics simulations</i>
+          </li>
+          <li>
+            Matthieu Chavent, Dimple Karia, Antreas C Kalli, Jan Domański, Anna L Duncan, George Hedger, Phillip J Stansfeld, Elena Seiradake, E Yvonne Jones, Mark SP Sansom,
+            <i>Interactions of the EphA2 kinase domain with PIPs in membranes: implications for receptor function</i>
+            <a class="external" href="https://doi.org/10.1016/j.str.2018.05.003">https://doi.org/10.1016/j.str.2018.05.003</a>
+          </li>
+          <li>
               J. Domański, M.S.P. Sansom, P.J. Stansfeld, R.B. Best,
               <i>Balancing Force Field Protein–Lipid Interactions To Capture Transmembrane Helix–Helix Association</i>
               <a class="external" href="https://pubs.acs.org/doi/abs/10.1021/acs.jctc.7b00983">https://pubs.acs.org/doi/abs/10.1021/acs.jctc.7b00983</a>
