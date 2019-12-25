@@ -93,6 +93,7 @@ layout: homepage
         </a>
         <h3>Plumed</h3>
         <p>An extension to molecular dynamics codes for running enhanced sampling simulations</p>
+        <a href="https://github.com/plumed/plumed2/commits?author=jandom" class="external">Link to contributions</a>
       </article>
       <article class="6u 12u$(xsmall) work-item">
         <a href="//ligandbook.org/" class="image fit thumb">
@@ -113,7 +114,7 @@ layout: homepage
           <img src="//www.mdanalysis.org/public/mdanalysis-logo_square.png" alt="" />
         </a>
         <h3>MDAnalysis</h3>
-        <p>A top-notch MD data analysis library.</p>
+        <p>A top-notch MD data analysis library. <a href="https://github.com/MDAnalysis/mdanalysis/commits?author=jandom" class="external">Link to contributions</a></p>
       </article>
       <article class="6u$ 12u$(xsmall) work-item">
         <a href="//jandomanski.blogspot.co.uk/" class="image fit thumb">
