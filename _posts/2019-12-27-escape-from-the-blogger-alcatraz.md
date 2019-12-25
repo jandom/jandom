@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Escape from the Blogger Alcatraz"
-date:   2019-08-25 00:00:00 +0100
+date:   2019-12-27 00:00:00 +0100
 categories: jekyll blogger migration
 ---
 
@@ -113,4 +113,4 @@ We finished Step 2 with the massive XML converted into individual posts and draf
 What remains then? We're done right?
 
 With the default Jekyll configuration, you're done: anything in the `_posts` directory is a 'collection' in Jekyll-speak.
-If you want to put your blog posts elsewhere, you can by adding a [custom collection](https://jekyllrb.com/docs/collections/). 
+If you want to put your blog posts elsewhere, you can by adding a [custom collection](https://jekyllrb.com/docs/collections/).
