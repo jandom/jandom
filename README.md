@@ -17,9 +17,7 @@ Setup jekyll on ubuntu following instructions on
 
   jekyll new homepage
 
-
-## Import old blogger-blog
-
+## Import posts from blogger.com
 
 Install the appropriate module/gem
 
