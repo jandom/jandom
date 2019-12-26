@@ -14,15 +14,16 @@ Finally, which pastures to choose and why?
 
 # How did we get here?
 
-It was mid 2012 and looking for a blogging platform I picked Blogger.
-Seemed legit, backed by Google, it sounded like a reasonable guess.
-Sure, some things were off – like including code samples, but hey, nothing I couldn't hack around.
-As years rolled on, it became clear that this in not the sweetheart to the powers that be.
-The blogger platform was abandoned, receiving few updates and falling further behind than competition.
+It was mid-2012 and looking for a blogging platform I picked Blogger.
+Seemed legit, backed by a tech giant (Google), it sounded like a reasonable guess.
+Sure, some things were off – including code samples was not well supported.
+But hey, nothing I couldn't hack around.
+As years rolled on, it became clear that Blogger in not the sweetheart to the powers at Google.
+The platform was near-abandoned, receiving few updates and falling further behind than competition.
 I wanted out but I didn't know how.
 Meanwhile, together with some friends at the Hack'n'Tell I saw Jekyll being used to manage a static website.
-It did the job remarkably will and was super-simple.
-Not caring about Ruby at all, I used it, had a productive time and wanted to pull my old Blogger posts into my new Jekyll landing page.
+Jekyll did the job remarkably well and was super-simple.
+I used Jekyll for a side project, had a productive experience and decided to pull my old Blogger posts into my new Jekyll landing page.
 
 # Step 1: Exporting the data from Blogger
 
@@ -114,3 +115,13 @@ What remains then? We're done right?
 
 With the default Jekyll configuration, you're done: anything in the `_posts` directory is a 'collection' in Jekyll-speak.
 If you want to put your blog posts elsewhere, you can by adding a [custom collection](https://jekyllrb.com/docs/collections/).
+
+# Outro
+
+So that was pretty smooth but were there no wrinkles at all?
+There is a number of things lost during the migration
+- all migrated files are HTML, no markdown is allowed
+- all migrated files are single line, which makes it hard to re-visit and edit them
+- code blocks that used to work in Blogger are not formatted correctly
+
+That last point maybe can be addressed by adding the required script tag, with a required JS library.
