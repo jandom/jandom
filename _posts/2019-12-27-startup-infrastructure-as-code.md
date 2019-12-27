@@ -1,15 +1,25 @@
 ---
 layout: post
-title:  "Infrastructure as code far a startup"
+title:  "Infrastructure as actual code for a startup"
 date:   2019-12-27 00:00:00 +0100
 ---
 
 ## Background
 
+What's the best way to setup infrastructure for a startup without a product-market fit?
+Should you prototype rapidly using things like AWS Console, clicking and tweaking by hand, or should you take the disciplined choice and template everything?
+Maybe ratchet up working prototypes and "up" them into templates?
+Is there typically enough time and experience to template everything?
+Or, conversely, will the click-ops swap you're creating today will slowly strangle you in the future?
+If you've been there either as a team member or team leader, maybe grab some popcorn – because we're going for a ride....
+
+## Intro
+
 Looking at my company's infrastructure, I knew we were in trouble.
 Everything was setup via the AWS web console, via click-ops.
 This worked because we had nobody with the required experience, and we needed to ship our product.
 We hired a consultant to setup the boilerplate and added resources as we went on.
+And we've added more resources.
 All the resources were in a single VPC with a single pubic subnet.
 The "EC2 classic" was here and it was here for good.
 At least we were sane enough to separate into 'staging', 'production' and 'testing' resources.
