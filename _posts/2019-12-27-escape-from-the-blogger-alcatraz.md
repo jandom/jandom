@@ -8,7 +8,7 @@ categories: jekyll blogger migration
 # Intro
 
 What platform to use when blogging? And why?
-What do to when your choice was a mistake and you have to migrate?
+What to do when your choice was a mistake and you have to migrate?
 How to keep your data, the precious posts you wrote, and get the hell out to some greener pastures?
 Finally, which pastures to choose and why?
 
@@ -22,8 +22,18 @@ As years rolled on, it became clear that Blogger in not the sweetheart to the po
 The platform was near-abandoned, receiving few updates and falling further behind than competition.
 I wanted out but I didn't know how.
 Meanwhile, together with some friends at the Hack'n'Tell I saw Jekyll being used to manage a static website.
-Jekyll did the job remarkably well and was super-simple.
+
+Why Jekyll then and not something else?
+It is no mystery that there are three main static site generators out there
+- [Jekyll](https://jekyllrb.com/)
+- [Hugo](https://gohugo.io/)
+- [Gatsby](https://gohugo.io/)
+
+You might wonder why is the Jekyll the coolest of the lot?
+Well, let me let you in on a secret - what if doesn't matter if it's sexy?
+In my hands, Jekyll did the job remarkably well and was super-simple.
 I used Jekyll for a side project, had a productive experience and decided to pull my old Blogger posts into my new Jekyll landing page.
+What more do I need than fewer headaches with experimental tools?
 
 # Step 1: Exporting the data from Blogger
 
@@ -124,4 +134,6 @@ There is a number of things lost during the migration
 - all migrated files are single line, which makes it hard to re-visit and edit them
 - code blocks that used to work in Blogger are not formatted correctly
 
-That last point maybe can be addressed by adding the required script tag, with a required JS library.
+The last point, about code blocks, may be addressed by importing the relevant JS library that I used for code formatting.
+
+*Massive thanks to Istvan Redl who reviewed and commented on this post*
