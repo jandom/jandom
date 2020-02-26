@@ -24,7 +24,25 @@ All the resources were in a single VPC with a single pubic subnet.
 The "EC2 classic" was here and it was here for good.
 At least we were sane enough to separate into 'staging', 'production' and 'testing' resources.
 
-## The first question
+## The journey taken
+
+Why should you trust some random guy's story?
+Great question, I honestly don't have a an answer.
+Now that the background is clear, what's next to describe?
+What were the ways we went about solving the problem?
+What did we try and why did we continue searching?
+Probably we missed a few things but hopefully we're not (total) bozos.
+
+### All aboard, the CloudFormation train
+
+### How about a change at the Terraform junction
+
+### Wandering in the dessert
+
+The principal critique: markup language with evaluatinos, bleh
+
+
+## Decision has been made, what next?
 
 Does this tool even work? How can I check if it does?
 Well, a minimal test would be jank over my personal page.
@@ -36,19 +54,6 @@ Additionally, it involves importing existing resources (created in AWS Web Conso
 Why take it step by step? Why not just jump in?
 "I pity the fool" – nothing beats incrementalism, if it's not greenfield. It's a new tool. You'll have to learn, your team will have to learn, and mistakes will be made.
 
-## The journey taken
-
-The purpose of this section is credibility: this is how we got to where we are.
-Maybe we missed a few things but we're not bozos.
-It's not our 1st attempt and we've given a lot of these tools a try.
-
-### All aboard, the CloudFormation train
-
-### How about a change at the Terraform junction
-
-### Wandering in the dessert
-
-The principal critique: markup language with evaluatinos, bleh
 
 
 Notes
