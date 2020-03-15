@@ -205,6 +205,7 @@ However, for running scientific infrastructure that often needs to be maintained
 The entire cost for us to run this operation is 35$ / month, aka peanuts. 
 Using tools such a pulumi, the infrastructure can be quickl spun-up and modified. 
 The pulumi program presented here was written in typescript but SDKs for most popular languages exist (including Python). 
+Scientific community could run many more pieces of infrastructure for less, in a more maintainable fashion using cloud providers and declarative infrastructure. 
 
 
 
