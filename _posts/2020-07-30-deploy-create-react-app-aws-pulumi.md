@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Deploying a Create React App to AWS with pulumi"
-date:   2020-77-39 00:00:00 +0100
+date:   2020-07-30 00:00:00 +0100
 categories: pulumi aws react
 ---
 
