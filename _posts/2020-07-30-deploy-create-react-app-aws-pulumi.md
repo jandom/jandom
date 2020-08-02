@@ -13,21 +13,21 @@ https://reactjs.org/docs/create-a-new-react-app.html
 
 You built it, change some source files. It works! Well, it works on your machine. 
 What's next? How do you actually get it out there, running? 
-You can build it but you want to ship it
+
+> You can build it but you want to ship it.
 
 The aim of this guide is to provide a step-by-step, incremental improvement journey. 
 What's the point in showing you how to build the castle, if it's not clear why one needs anything more than a shack?
 
-This is not just a cookbook recipie that assumes things will work out. 
-When possible, debuig and diagnostic commands are run to make sure things are in the state that they need to be. 
+This is not just a cookbook recipe that assumes things will work out. 
+When possible, debug and diagnostic commands are run to make sure things are in the state that they need to be. 
 
-This will be a big journey but if we can break it up into smaller substeps. 
-Iteratively, we'll go from a shack to a castle. 
+This will be a big journey but if we can break it up into smaller iterative substeps, we'll go from a shack to a castle.
 
 # Starting with a 'stock' create react app
 
 So what's the starting point of this journey? 
-If you follow the create react app docs, you'll see something like tis 
+If you follow the create react app docs, you'll see something like this 
 
 ```console
 npx create-react-app my-app
@@ -66,8 +66,8 @@ There are further wrinkles. Which caching settings to use for the resources? How
 
 What's the gateway drug of AWS? It's obviously the AWS console. 
 Things are very easy to setup but once the complexity becomes larger, things get trickier. 
-How trickier? Suppose you want to do a production environment, but then also a staging and a testing one. 
-How would you apply a configuration change accross all 3 environemnts? Well, unfrontunately, it's point and click. We don't want to do that, we'll use something else
+How trickier? Suppose you want to do a production environments, but then also a staging and a testing one. 
+How would you apply a configuration change accross all 3 environemnts? Well, unfortunately, it's point and click. We don't want to do that, so we'll use something else.
 
 # Serving directly from S3 (easy)
 
@@ -77,7 +77,7 @@ To avoid setting up resources in AWS console by hand, we'll use Pulumi to write 
 
 https://www.pulumi.com/docs/get-started/aws/begin/
 
-What's the first decision we need to make? It's deciding where to put the pulumi code managing our infrastructur. 
+What's the first decision we need to make? It's deciding where to put the pulumi code managing our infrastructure. 
 Let's create a new directory 'pulumi', alongside the 'build' directory. 
 
 ```console
@@ -227,7 +227,7 @@ Heading over to AWS console, you should see the bucket created and view its cont
 
 Quick checklist: we've got the build/ direcotry, we've got a bucket on S3. 
 
-What's in the bucket? Well, shocking and not unexpecedtly, nothing. 
+What's in the bucket? Well, unsurprisingly, nothing.
 
 ```console
 $ aws s3 ls s3://my-bucket-f01e841
@@ -258,7 +258,7 @@ upload: build/static/js/2.a430f49c.chunk.js to s3://my-bucket-f01e841/static/js/
 upload: build/static/js/2.a430f49c.chunk.js.map to s3://my-bucket-f01e841/static/js/2.a430f49c.chunk.js.map
 ```
 
-Now hat was easy... but is that what we want? Well... Everything in build got published so that's good news. 
+Now that was easy... but is that what we want? Well... Everything in build got published so that's good news. 
 But we probably don't want map files published in production. 
 Also what about the caching settings? Does this thing actually work? 
 There is only one way to find out: with the swiss-army knife of all things web, cURL
@@ -332,7 +332,7 @@ Following this StackOverflow thread, we'll follow similar defaults https://stack
 > Using Cache-Control: max-age=31536000 for your build/static assets, and Cache-Control: no-cache for everything else is a safe and effective starting point that ensures your user's browser will always check for an updated index.html file, and will cache all of the build/static files for one year. Note that you can use the one year expiration on build/static safely because the file contents hash is embedded into the filename.
 
 This is a much wider topic and we'll only stick to the simplest solution. 
-Searching around for best pratctices might give you some ideas for what to do depending on your situation. 
+Searching around for best practices might give you some ideas for what to do depending on your situation. 
 
 # Serving directly from S3 with Route53 (medium)
 
