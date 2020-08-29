@@ -55,5 +55,4 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - pulumi/
-  - _posts/2020-07-30-deploy-create-react-app-aws-pulumi/my-app/node_modules
-  - _posts/2020-07-30-deploy-create-react-app-aws-pulumi/my-app/pulumi/node_modules
+  - _posts/2020-07-30-deploy-create-react-app-aws-pulumi/my-app

@@ -5,13 +5,11 @@ date:   2020-07-30 00:00:00 +0100
 categories: pulumi aws react
 ---
 
-# Getting started with create react app
+# Getting started
 
-So you have just created your first app in create react app.
+So you have just created your first app with [Create React App](https://reactjs.org/docs/create-a-new-react-app.html).
 
-https://reactjs.org/docs/create-a-new-react-app.html
-
-You built it, change some source files. It works! Well, it works on your machine. 
+You built it, changed some source files. It works! Well, it works on your machine. 
 What's next? How do you actually get it out there, running? 
 
 > You can build it but you want to ship it.
@@ -221,7 +219,7 @@ Permalink: file:///Users/jandom/.pulumi/stacks/dev.json
 
 Heading over to AWS console, you should see the bucket created and view its contents
 
-![Bucket Created](bucket-created.png)
+![Bucket Created](/docs/images/posts/2020-07-30-deploy-create-react-app-aws-pulumi/bucket-created.png)
 
 ## Publishing contents to the S3 bucket 
 
@@ -341,6 +339,11 @@ IN PROGRESS
 # Serving directly from S3 with Route53 and CDN (hard)
 
 IN PROGRESS
+
+
+# Credits
+
+Big big thanks to Charlie "Cloud Wizard" Shepherd for helping me review and improve this post. 
 
 
 TODO
