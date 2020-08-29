@@ -5,7 +5,9 @@ date:   2020-07-30 00:00:00 +0100
 categories: pulumi aws react
 ---
 
-# Getting started
+{% include_relative figures/logos.svg %}
+
+# Introduction
 
 So you have just created your first app with [Create React App](https://reactjs.org/docs/create-a-new-react-app.html).
 
@@ -14,15 +16,55 @@ What's next? How do you actually get it out there, running?
 
 > You can build it but you want to ship it.
 
-The aim of this guide is to provide a step-by-step, incremental improvement journey. 
+The aim of this series of posts is to provide a step-by-step, incremental improvement journey.
+The posts will show how to build your infrastructure, starting from the simplest configuration. 
 What's the point in showing you how to build the castle, if it's not clear why one needs anything more than a shack?
 
-This is not just a cookbook recipe that assumes things will work out. 
+This series may be particularly interesting to frontend developers who want to increase their understanding of infrastucture. 
+
+Going beyond just a cookbook recipe will be a must (troubleshooting should be an essential part of any series). 
 When possible, debug and diagnostic commands are run to make sure things are in the state that they need to be. 
 
 This will be a big journey but if we can break it up into smaller iterative substeps, we'll go from a shack to a castle.
 
-# Starting with a 'stock' create react app
+## The plan
+
+{% include_relative figures/diagram.svg %}
+
+The first step is getting an AWS account. That's a little basic for this post and perhaps it's better to leave it for the reader to research. 
+
+What will we need from AWS? It is going to be a million services or just a few? For now just two: the app will need a domain (Route 53) and we'll need a place to put the files into (for that pourpose an S3 bucket will do). 
+
+There are further wrinkles. Which caching settings to use for the resources? How to scale the service in the future and how to monitor it? All these we'll be covered here – we'll be building up from the simplest shack to a more robust confgiruation. 
+
+## To click or not to click?
+
+What's the gateway drug of AWS? It's obviously the AWS console. 
+Things are very easy to setup but once the complexity becomes larger, things get trickier. 
+How trickier? Suppose you want to do a production environments, but then also a staging and a testing one. 
+How would you apply a configuration change accross all 3 environemnts? Well, unfortunately, it's point and click. We don't want to do that, so we'll use something else.
+
+## Why Pulumi?
+
+Let's start by explaining the choice of pulumi since it's a relatively new tool. 
+A catchy (and provocative) summary would be.
+
+> Pulumi is React for infrastructure
+
+Instead of managing the infrastructure via the console (easy to start, hard to manage), we will codify the infrastructure. 
+The standard solution to this is using products such as CloudFormation or Terraform. 
+Thees products are based custom languages, you may have heard them referred to as "infrastructure as code".
+However, that's not accurate. There is no real "code" instead there is "markup", either as JSON or YAML. 
+What does that mean? It means that it's very difficult to use programming concepts you're familiar with. 
+Refactoring a terraform file becomes a copy'n'paste bonanza. 
+So how does pulumi help? The promise is that you can write a Pulumi program (in JS, TypeScript, Python), declaring the infrastructure state you desire. 
+The pulumi program can then be broken up, refactored, and unit tested – much like any other coding tool you're familiar with. 
+
+# Let's do it 
+
+Without further delay, let's hit the road to a tech nirvana and the answers you've all been looking for!
+
+## Starting with a 'stock' Create React App
 
 So what's the starting point of this journey? 
 If you follow the create react app docs, you'll see something like this 
@@ -52,24 +94,7 @@ We'll cover all of that later once we have the nuts and bolts ready.
 Can these topics feel confusing and annoying? Hell yeah. 
 Have you ever seen them covered coprehensively in create react app documentation? Hell no. 
 
-## The plan
-
-The first step is getting an AWS account. That's a little basic for this post and perhaps it's better to leave it for the reader to research. 
-
-What will we need from AWS? It is going to be a million services or just a few? For now just two: the app will need a domain (Route 53) and we'll need a place to put the files into (for that pourpose an S3 bucket will do). 
-
-There are further wrinkles. Which caching settings to use for the resources? How to scale the service in the future and how to monitor it? All these we'll be covered here – we'll be building up from the simplest shack to a more robust confgiruation. 
-
-## To click or not to click?
-
-What's the gateway drug of AWS? It's obviously the AWS console. 
-Things are very easy to setup but once the complexity becomes larger, things get trickier. 
-How trickier? Suppose you want to do a production environments, but then also a staging and a testing one. 
-How would you apply a configuration change accross all 3 environemnts? Well, unfortunately, it's point and click. We don't want to do that, so we'll use something else.
-
-# Serving directly from S3 (easy)
-
-## Getting started with Pulumi 
+## Getting setup with Pulumi 
 
 To avoid setting up resources in AWS console by hand, we'll use Pulumi to write little programs that setup resources on the AWS cloud. These programs are declarative and can be written in any language of your choice, Javascript/Python, so it's very easy to do. 
 
@@ -88,11 +113,11 @@ $ cd pulumi
 Then let's login into pulumi, here we'll use the --local flag to just use a file on the filesystem. 
 
 ```console
-$ pulumi login --local
+$ pulumi login file://...
 ```
 
 
-So why not get started and create a new pulumi project?
+So why not get started and create a new pulumi project? Here is the command you need to run and the expected output.
 
 ```console
 $ pulumi new aws-typescript
@@ -149,12 +174,12 @@ Your new project is ready to go! ✨
 To perform an initial deployment, run 'pulumi up'
 ```
 
+Well done, that's how we setup a pulumi and project boiler plate. Let's create our first stack – it will hold the state of the infrastructure we maintain.
+
 ## Creating an AWS S3 bucket to hold the create react app
 
 Before we jump in, let's have a look around what we got at this step. 
-There should now be a first pulumi program in index.ts, let's have a look
-
-## Configuring the bucket to serve the page directly
+There should now be a first pulumi program in index.ts, let's have a look inside:
 
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
@@ -173,7 +198,7 @@ const bucket = new aws.s3.Bucket("my-bucket", {
 export const bucketName = bucket.id;
 ```
 
-This is too simple for what we want to do but good enough for now. 
+This is too simple for what we want to do **eventually** but good enough for now. 
 
 Let's get this miniature to work – if there are any problems in your pulumi config you'll catch them now. 
 What's better than incremental progression, when you're breaking new ground and trying not to get lost?
@@ -188,7 +213,8 @@ dev*  n/a          n/a
 
 ## Creating an S3 bucket to hold the assets
 
-Now we should be ready to get our first piece of infrastructure setup in pulumi!
+Now we should be ready to get our first piece of infrastructure setup in pulumi! 
+To get pulumi to create the stack on AWS, just run `pulumi up`:
 
 ```console
 $ pulumi up
@@ -217,15 +243,18 @@ Duration: 11s
 Permalink: file:///Users/jandom/.pulumi/stacks/dev.json
 ```
 
-Heading over to AWS console, you should see the bucket created and view its contents
+Pulumi says it's all done – but can you trust it?
+Heading over to AWS console, you should see the bucket created and view its contents:
 
 ![Bucket Created](/docs/images/posts/2020-07-30-deploy-create-react-app-aws-pulumi/bucket-created.png)
 
 ## Publishing contents to the S3 bucket 
 
-Quick checklist: we've got the build/ direcotry, we've got a bucket on S3. 
+We have an S3 bucket but now let's get the Create React App into it. 
+How can we accomplish that? Well, we've got the build/ direcotry and we've got a bucket on S3. 
+Let's sync the contents of build with the S3 bucket using the `aws s3 cp` command
 
-What's in the bucket? Well, unsurprisingly, nothing.
+What's in the newly bucket? Well, unsurprisingly, nothing.
 
 ```console
 $ aws s3 ls s3://my-bucket-f01e841
@@ -234,9 +263,8 @@ $ aws s3 ls s3://my-bucket-f01e841
 Yup, nada. So let's get some stuff in there! What could be easier?
 
 ```console
-$ aws s3 cp build/ s3://my-bucket-f01e841 --recursive
+$ aws s3 cp build/ s3://my-bucket-f01e841 --recursive --exclude *.map
 upload: build/favicon.ico to s3://my-bucket-f01e841/favicon.ico
-upload: build/static/css/main.5f361e03.chunk.css.map to s3://my-bucket-f01e841/static/css/main.5f361e03.chunk.css.map
 upload: build/index.html to s3://my-bucket-f01e841/index.html  
 upload: build/service-worker.js to s3://my-bucket-f01e841/service-worker.js
 upload: build/robots.txt to s3://my-bucket-f01e841/robots.txt  
@@ -250,15 +278,13 @@ upload: build/static/js/2.a430f49c.chunk.js.LICENSE.txt to s3://my-bucket-f01e84
 upload: build/static/js/main.4f4a69a4.chunk.js to s3://my-bucket-f01e841/static/js/main.4f4a69a4.chunk.js
 upload: build/static/js/runtime-main.f8c5b4be.js to s3://my-bucket-f01e841/static/js/runtime-main.f8c5b4be.js
 upload: build/static/media/logo.5d5d9eef.svg to s3://my-bucket-f01e841/static/media/logo.5d5d9eef.svg
-upload: build/static/js/runtime-main.f8c5b4be.js.map to s3://my-bucket-f01e841/static/js/runtime-main.f8c5b4be.js.map
-upload: build/static/js/main.4f4a69a4.chunk.js.map to s3://my-bucket-f01e841/static/js/main.4f4a69a4.chunk.js.map
 upload: build/static/js/2.a430f49c.chunk.js to s3://my-bucket-f01e841/static/js/2.a430f49c.chunk.js
-upload: build/static/js/2.a430f49c.chunk.js.map to s3://my-bucket-f01e841/static/js/2.a430f49c.chunk.js.map
 ```
 
-Now that was easy... but is that what we want? Well... Everything in build got published so that's good news. 
-But we probably don't want map files published in production. 
-Also what about the caching settings? Does this thing actually work? 
+Now that was easy... but is that what we want? 
+Well... Everything in `build` got published so that's good news. 
+We excluded `*.map` files which you may want to keep private.
+Also what about the [caching settings](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control) used by browsers? 
 There is only one way to find out: with the swiss-army knife of all things web, cURL
 
 ```console
@@ -273,10 +299,12 @@ We can certainly change that!
 ```console
 aws s3 rm s3://my-bucket-f01e841/ --recursive
 
-aws s3 sync build s3://my-bucket-f01e841/ \
-  --acl public-read \
+aws s3 cp build/ s3://my-bucket-f01e841 \
+  --recursive \
+  --exclude *.map \
+  --exclude index.html \
   --cache-control max-age=31536000 \
-  --exclude index.html
+  --acl public-read 
 
 aws s3 cp build/index.html s3://my-bucket-f01e841/index.html \
   --metadata-directive REPLACE \
@@ -285,7 +313,8 @@ aws s3 cp build/index.html s3://my-bucket-f01e841/index.html \
   --acl public-read
 ```
 
-And with any luck, all of these should upload. Let's test how things are working by requesting index.html 
+And with any luck, all of these files should upload to S3 with new cache-control headers. 
+Let's verify how things are working by requesting index.html 
 
 ```console
 $ curl http://my-bucket-f01e841.s3-eu-west-1.amazonaws.com/index.html -v
@@ -295,7 +324,8 @@ $ curl http://my-bucket-f01e841.s3-eu-west-1.amazonaws.com/index.html -v
 <!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/favicon.ico"/>...
 ```
 
-Importantly we also need to change to 
+Importantly, the root page is also working (redirecting to `index.html`). 
+We can verify that with cURL again
 
 ```console
 $ curl -v http://my-bucket-f01e841.s3-website-eu-west-1.amazonaws.com
@@ -332,18 +362,27 @@ Following this StackOverflow thread, we'll follow similar defaults https://stack
 This is a much wider topic and we'll only stick to the simplest solution. 
 Searching around for best practices might give you some ideas for what to do depending on your situation. 
 
-# Serving directly from S3 with Route53 (medium)
+# Conclusions
 
-IN PROGRESS
+That brings us to a conclusion, we have a rudimenatry setup for hosting a Create React App. 
+With a single bucket we can serve contents using HTTP requests. 
+This is a far cry from what we want, it's hard to expect users to access your website by the bucket URL!
+What's next in this series? Well, we need to connect the S3 bucket to a Route53 record. 
+Then, some considerations about load and caching will follow, showing how CloudFront can be used to cache the contents of your S3 bucket. 
+But that'll all come later!
 
-# Serving directly from S3 with Route53 and CDN (hard)
+## Serving directly from S3 with Route53 (medium)
 
-IN PROGRESS
+This extension is curretly in progress
+
+## Serving directly from S3 with Route53 and CDN (hard)
+
+This extension is curretnly in progress
 
 
 # Credits
 
-Big big thanks to Charlie "Cloud Wizard" Shepherd for helping me review and improve this post. 
+- Big big thanks to Charlie "Cloud Wizard" Shepherd for helping me review and improve this post. 
 
 
 TODO
