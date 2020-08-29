@@ -44,3 +44,18 @@ ruby -r rubygems -e 'require "jekyll-import";
     "no-blogger-info"       => false, # not to leave blogger-URL info (id and old URL) in the front matter
     "replace-internal-link" => false, # replace internal links using the post_url liquid tag.
   })'
+
+
+## Development 
+
+To update dependancies
+
+  bundle update
+
+To install dependancies on a clean slat
+
+  bundle install
+
+To serve on localhost
+
+  bundle exec jekyll serve
