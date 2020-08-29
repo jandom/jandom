@@ -12,10 +12,19 @@ Setup jekyll on ubuntu following instructions on
 
   https://jekyllrb.com/docs/installation/ubuntu/
 
+Install dependancies
+
+  bundle install
 
 ## Getting started
 
+To create a new project
+
   jekyll new homepage
+
+To run a local webserver
+
+  bundle exec jekyll serve
 
 ## Import posts from blogger.com
 

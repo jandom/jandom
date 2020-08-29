@@ -6,6 +6,5 @@ _drafts
 .jekyll-metadata
 vendor
 blogger
-
-**/.pulumi
+.pulumi
 node_modules
