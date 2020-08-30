@@ -112,7 +112,7 @@ Here we'll be sticking with Typescript (consistent with create react app).
 https://www.pulumi.com/docs/get-started/aws/begin/
 
 What's the first decision we need to make? 
-It's deciding where to put the pulumi code managing our infrastructure. 
+It's deciding where to put the Pulumi code managing our infrastructure. 
 Let's create a new directory 'pulumi', alongside the 'build' directory. 
 
 ```console
@@ -122,14 +122,14 @@ README.md	build		node_modules	package.json	public		pulumi		src		yarn.lock
 $ cd pulumi
 ```
 
-Then let's login into pulumi, here we'll us a local file to store the state of the project. 
+Then let's login into Pulumi, here we'll us a local file to store the state of the project. 
 This is okay for individual work and tinkering but gets insufficient once multiple people contribute to the project. 
 
 ```console
 $ pulumi login file://...
 ```
 
-So why not get started and create a new pulumi project? Here is the command you need to run and the expected output.
+So why not get started and create a new Pulumi project? Here is the command you need to run and the expected output.
 
 ```console
 $ pulumi new aws-typescript
@@ -186,13 +186,13 @@ Your new project is ready to go! ✨
 To perform an initial deployment, run 'pulumi up'
 ```
 
-Well done, that's how we setup a pulumi and project boiler plate. 
+Well done, that's how we setup a Pulumi and project boiler plate. 
 Let's create our first stack – it will hold the state of the infrastructure we maintain.
 
 ## Defining an S3 bucket
 
 Before we jump in, let's have a look around what we got at this step. 
-There should now be a first pulumi program in index.ts, let's have a look inside:
+There should now be a first Pulumi program in index.ts, let's have a look inside:
 
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
@@ -213,10 +213,10 @@ export const bucketName = bucket.id;
 
 This is too simple for what we want to do **eventually** but good enough for now. 
 
-Let's get this miniature to work – if there are any problems in your pulumi config you'll catch them now. 
+Let's get this miniature to work – if there are any problems in your Pulumi config you'll catch them now. 
 What's better than incremental progression, when you're breaking new ground and trying not to get lost?
 
-To get pulumi to show you the available stacks (dev, production, testing), just run 
+To get Pulumi to show you the available stacks (dev, production, testing), just run 
 
 ```console
 $ pulumi stack ls
@@ -226,8 +226,8 @@ dev*  n/a          n/a
 
 ## Creating an S3 bucket
 
-Now we should be ready to get our first piece of infrastructure setup in pulumi! 
-To get pulumi to create the stack on AWS, just run `pulumi up`:
+Now we should be ready to get our first piece of infrastructure setup in Pulumi! 
+To get Pulumi to create the stack on AWS, just run `pulumi up`:
 
 ```console
 $ pulumi up
