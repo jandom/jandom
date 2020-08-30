@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Deploying a Create React App to AWS with pulumi"
+title:  "Deploying a Create React App to AWS with Pulumi"
 date:   2020-07-30 00:00:00 +0100
 categories: pulumi aws react
 ---
@@ -10,7 +10,6 @@ categories: pulumi aws react
 # Introduction
 
 So you have just created your first app with [Create React App](https://reactjs.org/docs/create-a-new-react-app.html).
-
 You built it, changed some source files. It works! Well, it works on your machine. 
 What's next? How do you actually get it out there, running? 
 
@@ -29,40 +28,48 @@ This will be a big journey but if we can break it up into smaller iterative subs
 
 ## The plan
 
+What will we need from AWS? It is going to be a million services or just a few? For now just one: the app will need an S3 bucket to place the transpiled JS files for Create React App. 
+
 ![The plan](/docs/images/posts/2020-07-30-deploy-create-react-app-aws-pulumi/diagram.svg)
 
-The first step is getting an AWS account. That's a little basic for this post and perhaps it's better to leave it for the reader to research. 
+There are further wrinkles: 
+- How to ensure an encrypted SSL connection?
+- Which caching settings to use for the resources? 
+- How to scale the service in the future and how to monitor it? 
 
-What will we need from AWS? It is going to be a million services or just a few? For now just two: the app will need a domain (Route 53) and we'll need a place to put the files into (for that pourpose an S3 bucket will do). 
-
-There are further wrinkles. Which caching settings to use for the resources? How to scale the service in the future and how to monitor it? All these we'll be covered here – we'll be building up from the simplest shack to a more robust confgiruation. 
+All these we'll be covered in the series – we'll be building up from the simplest shack to a more robust confgiruation. 
 
 ## To click or not to click?
 
 What's the gateway drug of AWS? It's obviously the AWS console. 
 Things are very easy to setup but once the complexity becomes larger, things get trickier. 
-How trickier? Suppose you want to do a production environments, but then also a staging and a testing one. 
-How would you apply a configuration change accross all 3 environemnts? Well, unfortunately, it's point and click. We don't want to do that, so we'll use something else.
+How trickier? Suppose you want to do a production environments but then also a staging and a testing environments. 
+How would you apply a configuration change accross all three environemnts? 
+Well, unfortunately, it's point and click with the AWS console.
+We don't want to do that, so we'll use something else, a tool called Pulumi. 
+*True infrastructure as code*.
 
 ## Why Pulumi?
 
-Let's start by explaining the choice of pulumi since it's a relatively new tool. 
-A catchy (and provocative) summary would be.
+Let's start by explaining the choice of Pulumi since it's a relatively new tool. 
+A catchy (and provocative) summary would be:
 
 > Pulumi is React for infrastructure
 
-Instead of managing the infrastructure via the console (easy to start, hard to manage), we will codify the infrastructure. 
+Instead of managing the infrastructure via the AWS console (easy to start, hard to manage), we will codify the infrastructure. 
 The standard solution to this is using products such as CloudFormation or Terraform. 
-Thees products are based custom languages, you may have heard them referred to as "infrastructure as code".
-However, that's not accurate. There is no real "code" instead there is "markup", either as JSON or YAML. 
+These products are based on custom markup languages, you may have heard them referred to as "infrastructure as code".
+However, that's not accurate. There is no real "code", instead there is "markup" either as JSON or YAML. 
 What does that mean? It means that it's very difficult to use programming concepts you're familiar with. 
-Refactoring a terraform file becomes a copy'n'paste bonanza. 
-So how does pulumi help? The promise is that you can write a Pulumi program (in JS, TypeScript, Python), declaring the infrastructure state you desire. 
-The pulumi program can then be broken up, refactored, and unit tested – much like any other coding tool you're familiar with. 
+For example, refactoring a Terraform files becomes a copy'n'paste bonanza. 
 
-# Let's do it 
+So how does Pulumi help? The promise is that you can write a Pulumi program in a familiar language (JS, TypeScript, Python).
+The Pulumi program can then be broken up, refactored, and unit tested – much like any other coding tool you're familiar with. 
+Declaring the infrastructure state you desire, much like you would declare React component structure you want rendered. 
 
-Without further delay, let's hit the road to a tech nirvana and the answers you've all been looking for!
+# Let's get our hands dirty
+
+Without further delay, let's hit the road to a tech nirvana and get the answers you've all been looking for!
 
 ## Starting with a 'stock' Create React App
 
@@ -75,7 +82,7 @@ cd my-app
 npm build
 ```
 
-This gives you a build/ directory – let's have a look inside
+This transpiles the sources and gives you a build/ directory – let's have a look inside
 
 ```console
 $ ls build/
@@ -85,8 +92,10 @@ index.html						precache-manifest.a6c522ff242ab9465073ffb9aae702c8.js
 logo192.png						robots.txt
 ```
 
-But what do we do with that? How do you get your precious creation into the cloud?
-How to ensure that as you push updates to your app clients get the latest version?
+But what do you do with that? These are some interesting questions:
+- How do you get your precious creation into the cloud?
+- How to ensure that as you push updates to your app clients get the latest version?
+
 There are some big questions there, in particular which *cache directives* to set for the files in build/. 
 These settings will be super important for the browser. 
 We'll cover all of that later once we have the nuts and bolts ready. 
@@ -96,11 +105,14 @@ Have you ever seen them covered coprehensively in create react app documentation
 
 ## Getting setup with Pulumi 
 
-To avoid setting up resources in AWS console by hand, we'll use Pulumi to write little programs that setup resources on the AWS cloud. These programs are declarative and can be written in any language of your choice, Javascript/Python, so it's very easy to do. 
+To avoid setting up resources in AWS console by hand, we'll use Pulumi to write little programs that setup resources on the AWS cloud. 
+These programs are declarative and can be written in any language of your choice, so it's very easy to do. 
+Here we'll be sticking with Typescript (consistent with create react app).
 
 https://www.pulumi.com/docs/get-started/aws/begin/
 
-What's the first decision we need to make? It's deciding where to put the pulumi code managing our infrastructure. 
+What's the first decision we need to make? 
+It's deciding where to put the pulumi code managing our infrastructure. 
 Let's create a new directory 'pulumi', alongside the 'build' directory. 
 
 ```console
@@ -110,12 +122,12 @@ README.md	build		node_modules	package.json	public		pulumi		src		yarn.lock
 $ cd pulumi
 ```
 
-Then let's login into pulumi, here we'll use the --local flag to just use a file on the filesystem. 
+Then let's login into pulumi, here we'll us a local file to store the state of the project. 
+This is okay for individual work and tinkering but gets insufficient once multiple people contribute to the project. 
 
 ```console
 $ pulumi login file://...
 ```
-
 
 So why not get started and create a new pulumi project? Here is the command you need to run and the expected output.
 
@@ -174,9 +186,10 @@ Your new project is ready to go! ✨
 To perform an initial deployment, run 'pulumi up'
 ```
 
-Well done, that's how we setup a pulumi and project boiler plate. Let's create our first stack – it will hold the state of the infrastructure we maintain.
+Well done, that's how we setup a pulumi and project boiler plate. 
+Let's create our first stack – it will hold the state of the infrastructure we maintain.
 
-## Creating an AWS S3 bucket to hold the create react app
+## Defining an S3 bucket
 
 Before we jump in, let's have a look around what we got at this step. 
 There should now be a first pulumi program in index.ts, let's have a look inside:
@@ -211,7 +224,7 @@ NAME  LAST UPDATE  RESOURCE COUNT
 dev*  n/a          n/a
 ```
 
-## Creating an S3 bucket to hold the assets
+## Creating an S3 bucket
 
 Now we should be ready to get our first piece of infrastructure setup in pulumi! 
 To get pulumi to create the stack on AWS, just run `pulumi up`:
@@ -244,7 +257,7 @@ Permalink: file:///Users/jandom/.pulumi/stacks/dev.json
 ```
 
 Pulumi says it's all done – but can you trust it?
-Heading over to AWS console, you should see the bucket created and view its contents:
+Heading over to AWS console, you should see the bucket created and confirm it has been created.
 
 ![Bucket Created](/docs/images/posts/2020-07-30-deploy-create-react-app-aws-pulumi/bucket-created.png)
 
@@ -308,7 +321,7 @@ aws s3 cp build/ s3://my-bucket-f01e841 \
 
 aws s3 cp build/index.html s3://my-bucket-f01e841/index.html \
   --metadata-directive REPLACE \
-  --cache-control max-age=0,no-cache,no-store,must-revalidate \
+  --cache-control no-cache,no-store \
   --content-type text/html \
   --acl public-read
 ```
