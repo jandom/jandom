@@ -67,6 +67,12 @@ So how does Pulumi help? The promise is that you can write a Pulumi program in a
 The Pulumi program can then be broken up, refactored, and unit tested – much like any other coding tool you're familiar with. 
 Declaring the infrastructure state you desire, much like you would declare React component structure you want rendered. 
 
+But how does a pulumi program look **exactly**? 
+Foreshadowing is all the jazz, so why not try some of that here.
+Here is pulumi snippet that creates an S3 bucket called `my-bucket` on AWS. 
+
+![Pulumi example](/docs/images/posts/2020-07-30-deploy-create-react-app-aws-pulumi/carbon.svg)
+
 # Let's get our hands dirty
 
 Without further delay, let's hit the road to a tech nirvana and get the answers you've all been looking for!
@@ -146,45 +152,11 @@ stack name: (dev)
 Enter your passphrase to protect config/secrets: 
 Re-enter your passphrase to confirm: 
 Created stack 'dev'
-
-Enter your passphrase to unlock config/secrets
-    (set PULUMI_CONFIG_PASSPHRASE to remember): 
-aws:region: The AWS region to deploy into: (us-east-1) eu-west-1
-Saved config
-
-Installing dependencies...
-
-
-> @pulumi/docker@2.2.3 install /Users/jandom/workspace/weekend-side-projects/from-shacks-to-castles-in-the-cloud/my-app/pulumi/node_modules/@pulumi/docker
-> node scripts/install-pulumi-plugin.js resource docker v2.2.3
-
-[resource plugin docker-2.2.3] installing
-Downloading plugin: 16.77 MiB / 16.77 MiB [=========================] 100.00% 6s
-Moving plugin... done.
-
-> @pulumi/aws@2.13.0 install /Users/jandom/workspace/weekend-side-projects/from-shacks-to-castles-in-the-cloud/my-app/pulumi/node_modules/@pulumi/aws
-> node scripts/install-pulumi-plugin.js resource aws v2.13.0
-
-[resource plugin aws-2.13.0] installing
-Downloading plugin: 66.67 MiB / 66.67 MiB [========================] 100.00% 30s
-Moving plugin... done.
-
-> protobufjs@6.10.1 postinstall /Users/jandom/workspace/weekend-side-projects/from-shacks-to-castles-in-the-cloud/my-app/pulumi/node_modules/protobufjs
-> node scripts/postinstall
-
-added 103 packages from 227 contributors and audited 103 packages in 52.356s
-
-13 packages are looking for funding
-run `npm fund` for details
-
-found 0 vulnerabilities
-
-Finished installing dependencies
-
-Your new project is ready to go! ✨
-
-To perform an initial deployment, run 'pulumi up'
 ```
+
+Here is a little asciicast to show you how this step will look like. 
+
+[![asciicast](https://asciinema.org/a/356815.png)](https://asciinema.org/a/356815)
 
 Well done, that's how we setup a Pulumi and project boiler plate. 
 Let's create our first stack – it will hold the state of the infrastructure we maintain.

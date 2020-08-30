@@ -8,3 +8,4 @@ vendor
 blogger
 .pulumi
 node_modules
+pulumi-secrets.txt
