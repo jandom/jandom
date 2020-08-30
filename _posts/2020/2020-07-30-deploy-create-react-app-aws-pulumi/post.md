@@ -5,7 +5,7 @@ date:   2020-07-30 00:00:00 +0100
 categories: pulumi aws react
 ---
 
-{% include_relative figures/logos.svg %}
+![Introduction](/docs/images/posts/2020-07-30-deploy-create-react-app-aws-pulumi/logos.svg)
 
 # Introduction
 
@@ -29,7 +29,7 @@ This will be a big journey but if we can break it up into smaller iterative subs
 
 ## The plan
 
-{% include_relative figures/diagram.svg %}
+![The plan](/docs/images/posts/2020-07-30-deploy-create-react-app-aws-pulumi/diagram.svg)
 
 The first step is getting an AWS account. That's a little basic for this post and perhaps it's better to leave it for the reader to research. 
 
