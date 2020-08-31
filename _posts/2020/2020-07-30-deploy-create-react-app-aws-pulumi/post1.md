@@ -163,11 +163,18 @@ Here is a little asciicast to show you how this step will look like.
 
 [![asciicast](https://asciinema.org/a/356815.png)](https://asciinema.org/a/356815)
 
-Well done, that's how we setup a Pulumi project boiler plate. 
+Now we need to configure our region of choice, here we'll opt for `eu-west-1` but it doesn't matter what you choose here (`us-west-1` or any other will do just fine).
+
+```console
+pulumi config set aws:region eu-west-1
+```
 
 This command also creates our first **stack** – called "dev" – it will hold the state of the infrastructure we maintain.
 
 > What's a Pulumi stack? Stack is an instance of your project, each often corresponding to a different cloud environment
+
+Well done, that's how we setup a Pulumi and project boiler plate. 
+Let's create our first stack – it will hold the state of the infrastructure we maintain.
 
 ## Defining an S3 bucket
 
