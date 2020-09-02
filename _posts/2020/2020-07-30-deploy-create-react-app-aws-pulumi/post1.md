@@ -19,12 +19,12 @@ The aim of this series of posts is to provide a step-by-step, incremental improv
 The posts will show how to build your infrastructure, starting from the simplest configuration. 
 What's the point in showing you how to build the castle, if it's not clear why one needs anything more than a shack?
 
-This series may be particularly interesting to frontend developers who want to increase their understanding of infrastucture. 
+This series may be particularly interesting to frontend developers who want to increase their understanding of infrastructure. 
 
 Going beyond just a cookbook recipe will be a must (troubleshooting should be an essential part of any series). 
 When possible, debug and diagnostic commands are run to make sure things are in the state that they need to be. 
 
-This will be a big journey but if we can break it up into smaller iterative substeps, we'll go from a shack to a castle.
+This will be a big journey but if we can break it up into smaller iterative sub-steps, we'll go from a shack to a castle.
 
 ## The plan
 
@@ -37,14 +37,14 @@ There are further wrinkles:
 - Which caching settings to use for the resources? 
 - How to scale the service in the future and how to monitor it? 
 
-All these we'll be covered in the series – we'll be building up from the simplest shack to a more robust confgiruation. 
+All these we'll be covered in the series – we'll be building up from the simplest shack to a more robust configuration. 
 
 ## To click or not to click?
 
 What's the gateway drug of AWS? It's obviously the AWS console. 
 Things are very easy to setup but once the complexity becomes larger, things get trickier. 
 How trickier? Suppose you want to do a production environments but then also a staging and a testing environments. 
-How would you apply a configuration change accross all three environemnts? 
+How would you apply a configuration change across all three environments? 
 Well, unfortunately, it's point and click with the AWS console.
 We don't want to do that, so we'll use something else, a tool called Pulumi. 
 *True infrastructure as code*.
@@ -107,7 +107,7 @@ These settings will be super important for the browser.
 We'll cover all of that later once we have the nuts and bolts ready. 
 
 Can these topics feel confusing and annoying? Hell yeah. 
-Have you ever seen them covered coprehensively in create react app documentation? Hell no. 
+Have you ever seen them covered in create react app documentation? Hell no. 
 
 ## Getting setup with Pulumi 
 
@@ -144,7 +144,7 @@ This command will walk you through creating a new Pulumi project.
 Enter a value or leave blank to accept the (default), and press <ENTER>.
 Press ^C at any time to quit.
 
-project name: (pulum) my-app
+project name: (pulumi) my-app
 project description: (A minimal AWS TypeScript Pulumi program) 
 Created project 'my-app'
 
@@ -236,7 +236,7 @@ Heading over to AWS console, you should see the bucket created and confirm it ha
 ## Publishing contents to the S3 bucket 
 
 We have an S3 bucket but now let's get the Create React App into it. 
-How can we accomplish that? Well, we've got the build/ direcotry and we've got a bucket on S3. 
+How can we accomplish that? Well, we've got the build/ directory and we've got a bucket on S3. 
 Let's sync the contents of build with the S3 bucket using the `aws s3 cp` command
 
 What's in the newly bucket? Well, unsurprisingly, nothing.
@@ -349,7 +349,7 @@ Searching around for best practices might give you some ideas for what to do dep
 
 # Conclusions
 
-That brings us to a conclusion, we have a rudimenatry setup for hosting a Create React App. 
+That brings us to a conclusion, we have a rudimentary setup for hosting a Create React App. 
 With a single bucket we can serve contents using HTTP requests. 
 This is a far cry from what we want, it's hard to expect users to access your website by the bucket URL!
 What's next in this series? Well, we need to connect the S3 bucket to a Route53 record. 
