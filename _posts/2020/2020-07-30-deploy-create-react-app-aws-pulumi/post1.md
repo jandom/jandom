@@ -374,7 +374,7 @@ Which components to add next? Checkout the second blog post in the series on how
 
 ## Credits
 
-Big big thanks to my colleges
+Big big thanks to my colleagues
 
 - [Charlie "Cloud Wizard" Shepherd](https://www.linkedin.com/in/charlie-shepherd-82946656/)
 - [Giulio Cirnigliaro](https://www.linkedin.com/in/giulio-cirnigliaro-038602161) 
