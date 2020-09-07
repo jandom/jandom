@@ -113,6 +113,9 @@ Have you ever seen them covered in create react app documentation? Hell no.
 
 To avoid setting up resources in AWS console by hand, we'll use Pulumi to write little programs that setup resources on the AWS cloud. 
 These programs are declarative and can be written in any language of your choice, so it's very easy to do. 
+
+> What's a Pulumi program? Program: a collection of files written in your chosen programming language
+
 Here we'll be sticking with Typescript (consistent with create react app).
 
 https://www.pulumi.com/docs/get-started/aws/begin/
@@ -135,7 +138,9 @@ This is okay for individual work and tinkering but gets insufficient once multip
 $ pulumi login file://...
 ```
 
-So why not get started and create a new Pulumi project? Here is the command you need to run and the expected output.
+So why not get started and create a new Pulumi **project**? Here is the command you need to run and the expected output.
+
+> What's a Pulumi project? Project is a directory containing a program, with metadata, so Pulumi knows how to run it
 
 ```console
 $ pulumi new aws-typescript
@@ -158,8 +163,11 @@ Here is a little asciicast to show you how this step will look like.
 
 [![asciicast](https://asciinema.org/a/356815.png)](https://asciinema.org/a/356815)
 
-Well done, that's how we setup a Pulumi and project boiler plate. 
-Let's create our first stack – it will hold the state of the infrastructure we maintain.
+Well done, that's how we setup a Pulumi project boiler plate. 
+
+This command also creates our first **stack** – called "dev" – it will hold the state of the infrastructure we maintain.
+
+> What's a Pulumi stack? Stack is an instance of your project, each often corresponding to a different cloud environment
 
 ## Defining an S3 bucket
 
@@ -195,6 +203,8 @@ $ pulumi stack ls
 NAME  LAST UPDATE  RESOURCE COUNT
 dev*  n/a          n/a
 ```
+
+If you want to jump more into the Pulumi nomenclature, here is a great [introduction](https://www.pulumi.com/docs/intro/concepts/programming-model/#program-structure)
 
 ## Creating an S3 bucket
 
@@ -356,23 +366,17 @@ What's next in this series? Well, we need to connect the S3 bucket to a Route53 
 Then, some considerations about load and caching will follow, showing how CloudFront can be used to cache the contents of your S3 bucket. 
 But that'll all come later!
 
-## Serving directly from S3 with Route53 (medium)
+## What's next?
 
-This extension is curretly in progress
+This was a simple intro to publishing a Create React App to AWS S3 via Pulumi. 
+It's rudimentary and not suitable for a production-level workload. 
+Which components to add next? Checkout the second blog post in the series on how to connect Route 53 with our Create React App. 
 
-## Serving directly from S3 with Route53 and CDN (hard)
+## Credits
 
-This extension is curretnly in progress
+Big big thanks to my colleges
 
+- [Charlie "Cloud Wizard" Shepherd](https://www.linkedin.com/in/charlie-shepherd-82946656/)
+- [Giulio Cirnigliaro](https://www.linkedin.com/in/giulio-cirnigliaro-038602161) 
 
-# Credits
-
-- Big big thanks to Charlie "Cloud Wizard" Shepherd for helping me review and improve this post. 
-
-
-TODO
-- Adding a Route53 domain pointing to the bucket
-- Bolting on a CDN to help with large loads
-- Bucket for logging?
-- Server-side rendering?
-- Diagrams within a common frame of refrenec
+For helping me review and improve this post. 
