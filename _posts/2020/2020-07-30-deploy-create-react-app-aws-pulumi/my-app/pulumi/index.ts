@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
 import * as awsx from "@pulumi/awsx";
 
-async function main() {
+function main() {
   // Create an AWS resource (S3 Bucket)
   const bucket = new aws.s3.Bucket("my-app.jandomanski.com", {
     bucket: "my-app.jandomanski.com",
@@ -13,18 +13,22 @@ async function main() {
   });
 
   // Get the hosted zone by domain name
-  const hostedZone = await aws.route53.getZone({ name: "jandomanski.com" });
+  const hostedZoneId = aws.route53
+    .getZone({ name: "jandomanski.com" }, { async: true })
+    .then((zone) => zone.id);
 
   // Create a Route53 A-record
   const record = new aws.route53.Record("targetDomain", {
     name: "my-app.jandomanski.com",
-    zoneId: hostedZone.zoneId,
+    zoneId: hostedZoneId,
     type: "A",
-    aliases: [{
+    aliases: [
+      {
         zoneId: bucket.hostedZoneId,
         name: bucket.websiteDomain,
         evaluateTargetHealth: true,
-    }],
+      },
+    ],
   });
 
   return {
