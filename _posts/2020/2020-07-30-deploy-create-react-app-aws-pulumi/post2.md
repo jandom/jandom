@@ -114,22 +114,18 @@ Then we run the familiar `pulumi up` and here is a recording of how things shoul
 
 [![asciicast](https://asciinema.org/a/fhdrDlVWeBM5AOUfQHUPmr8CB.svg)](https://asciinema.org/a/fhdrDlVWeBM5AOUfQHUPmr8CB)
 
-## Refactoring to allow for async calls
+## Refactoring to wrap in a main function
 
 Things are looking great – we're iteratively moving towards the designed solution. 
-It's time for a little twist: a refactor to take advantage of the `async` functionality in Pulumi.
-Why is that needed, why add all this complexity of promises? 
-Pulumi relies heavily on promises and to use some of the needed functionality, things have to be wrapped in an `async` block. 
-Can I please ask you to take this one on faith (for a moment) and believe that an explanation will be given later? 
-
-Here is the program wrapped in an `async` function. 
+It's time for a little twist: a refactor to wrap our program into a main function. 
+For now it's just eye-candy and doesn't really change too much. 
 
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
 import * as awsx from "@pulumi/awsx";
 
-async function main() {
+function main() {
   // Create an AWS resource (S3 Bucket)
   const bucket = new aws.s3.Bucket("my-app.jandomanski.com", {
     bucket: "my-app.jandomanski.com",
@@ -152,21 +148,19 @@ We can now run `pulumi up` again but since no resources are changed, it doesn't 
 
 ## Adding a Route 53 A-record
 
-So why did we add this silly `async` block and make all the people who hate promises stop reading?
 What's our aim here? We need to put our S3 bucket behind a domain. 
 To do that, we need to create a Route53 record in the DNS. 
 How do we create Route53 record in the DNS? Well, we take an existing hosted zone (I'm assuming that you have that setup already) and use that to create the Record. 
 
 Getting the hosted zone uses this magical invocation 
 ```typescipt
-await aws.route53.getZone({ name: "jandomanski.com" })
+aws.route53.getZone({ name: "jandomanski.com" }, { async: true }).then(...)
 ```
 
-Any `await` has to be wrapped in an `async` function. 
-Here is the entire pulumi program. It retrieves the hosted zone information (via an `await` call) and creates a DNS record linking the domain to the S3 bucket. 
+Here is the entire pulumi program. It retrieves the hosted zone information (a promise, under the hood) and creates a DNS record linking the domain to the S3 bucket. 
 
 ```typescript
-async function main() {
+function main() {
   // Create an AWS resource (S3 Bucket)
   const bucket = new aws.s3.Bucket("my-app.jandomanski.com", {
     bucket: "my-app.jandomanski.com",
@@ -176,8 +170,10 @@ async function main() {
     },
   });
 
-  // Get an *existing* hosted zone by domain name
-  const hostedZone = await aws.route53.getZone({ name: "jandomanski.com" });
+  // Get the hosted zone by domain name
+  const hostedZoneId = aws.route53
+    .getZone({ name: "jandomanski.com" }, { async: true })
+    .then((zone) => zone.id);
 
   // Create a Route53 A-record
   const record = new aws.route53.Record("targetDomain", {
@@ -185,7 +181,7 @@ async function main() {
     zoneId: hostedZone.zoneId,
     type: "A",
     aliases: [{
-        zoneId: bucket.hostedZoneId,
+        zoneId: hostedZoneId,
         name: bucket.websiteDomain,
         evaluateTargetHealth: true,
     }],
@@ -295,7 +291,6 @@ Whoa, that's really cool! It worked!
 Well done for bearing with this one! We took a pretty windy road through the space of infrastructure and Pulumi. 
 There was a lot of group covered in this post:
 - New Pulumi concepts in managing DNS records via the AWS Route53 service,
-- Using await/async calls in Pulumi programs to access certain functionality,
 - Diagnosing and debugging DNS setting using `dig`.
 
 This was much harder than the previous "easy" architecture, and a lot more complex!
