@@ -15,7 +15,7 @@ function main() {
   // Get the hosted zone by domain name
   const hostedZoneId = aws.route53
     .getZone({ name: "jandomanski.com" }, { async: true })
-    .then((zone) => zone.id);
+    .then((zone) => zone.zoneId);
 
   // Create a Route53 A-record
   const record = new aws.route53.Record("targetDomain", {
