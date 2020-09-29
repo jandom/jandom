@@ -1,7 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
-import * as aws from "@pulumi/aws";
-import * as awsx from "@pulumi/awsx";
 import { MyApp } from "./src/my-app";
+import { MyCertificate } from "./src/my-certificate";
 
 function main() {
   const stackConfig = new pulumi.Config("my-app");
@@ -10,8 +9,13 @@ function main() {
     targetDomain: stackConfig.require("targetDomain"),
   };
 
+  const certificate = new MyCertificate('my-certificate', {
+    targetDomain: config.targetDomain,
+  });
+
   const myApp = new MyApp("my-app", {
     targetDomain: config.targetDomain,
+    certificateValidation: certificate.certificateValidation,
   });
 
   const { cdn, bucket, record } = myApp;

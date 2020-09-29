@@ -2,12 +2,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
 import * as awsx from "@pulumi/awsx";
 
-import { getDomainAndSubdomain, createDistributionArgs } from "./utils";
+import { getDomainAndSubdomain, tenMinutes } from "../utils";
 
-export class MyApp extends pulumi.ComponentResource {
-  bucket: aws.s3.Bucket;
-  cdn: aws.cloudfront.Distribution;
-  record: aws.route53.Record;
+export class MyCertificate extends pulumi.ComponentResource {
+  certificateValidation: aws.acm.CertificateValidation;
 
   constructor(
     name: string,
@@ -16,22 +14,8 @@ export class MyApp extends pulumi.ComponentResource {
     },
     opts: any = {}
   ) {
-    super("pkg:index:MyApp", name, {}, opts);
+    super("pkg:index:Certificate", name, {}, opts);
     const { targetDomain } = args;
-    // Create an AWS resource (S3 Bucket)
-    this.bucket = new aws.s3.Bucket(
-      targetDomain,
-      {
-        bucket: targetDomain,
-        acl: "public-read",
-        website: {
-          indexDocument: "index.html",
-        },
-      },
-      { parent: this }
-    );
-
-    const tenMinutes = 60 * 10;
 
     // Per AWS, ACM certificate must be in the us-east-1 region.
     const eastRegion = new aws.Provider(
@@ -51,7 +35,7 @@ export class MyApp extends pulumi.ComponentResource {
       },
       { provider: eastRegion, parent: this }
     );
-    
+
     const domainParts = getDomainAndSubdomain(targetDomain);
     const hostedZoneId = aws.route53
       .getZone({ name: domainParts.parentDomain }, { async: true })
@@ -84,42 +68,13 @@ export class MyApp extends pulumi.ComponentResource {
      * and https://github.com/terraform-providers/terraform-provider-aws/blob/master/aws/resource_aws_acm_certificate_validation.go
      * for the actual implementation.
      */
-    const certificateValidation = new aws.acm.CertificateValidation(
+    this.certificateValidation = new aws.acm.CertificateValidation(
       "certificateValidation",
       {
         certificateArn: certificate.arn,
         validationRecordFqdns: [certificateValidationDomain.fqdn],
       },
       { provider: eastRegion, parent: this }
-    );
-
-    const distributionArgs = createDistributionArgs(
-      targetDomain,
-      this.bucket,
-      certificateValidation,
-      tenMinutes
-    );
-
-    this.cdn = new aws.cloudfront.Distribution("cdn", distributionArgs, {
-      parent: this,
-    });
-
-    // Create a Route53 A-record
-    this.record = new aws.route53.Record(
-      "targetDomain",
-      {
-        name: targetDomain,
-        zoneId: hostedZoneId,
-        type: "A",
-        aliases: [
-          {
-            name: this.cdn.domainName,
-            zoneId: this.cdn.hostedZoneId,
-            evaluateTargetHealth: true,
-          },
-        ],
-      },
-      { parent: this }
     );
   }
 }
