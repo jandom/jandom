@@ -5,6 +5,7 @@ import * as awsx from "@pulumi/awsx";
 import { getDomainAndSubdomain, tenMinutes } from "../utils";
 
 export class MyCertificate extends pulumi.ComponentResource {
+  certificate: aws.acm.Certificate;
   certificateValidation: aws.acm.CertificateValidation;
 
   constructor(
@@ -27,7 +28,7 @@ export class MyCertificate extends pulumi.ComponentResource {
       { parent: this }
     );
 
-    const certificate = new aws.acm.Certificate(
+    this.certificate = new aws.acm.Certificate(
       "certificate",
       {
         domainName: targetDomain,
@@ -48,10 +49,10 @@ export class MyCertificate extends pulumi.ComponentResource {
     const certificateValidationDomain = new aws.route53.Record(
       `${targetDomain}-validation`,
       {
-        name: certificate.domainValidationOptions[0].resourceRecordName,
+        name: this.certificate.domainValidationOptions[0].resourceRecordName,
         zoneId: hostedZoneId,
-        type: certificate.domainValidationOptions[0].resourceRecordType,
-        records: [certificate.domainValidationOptions[0].resourceRecordValue],
+        type: this.certificate.domainValidationOptions[0].resourceRecordType,
+        records: [this.certificate.domainValidationOptions[0].resourceRecordValue],
         ttl: tenMinutes,
       },
       {
@@ -71,7 +72,7 @@ export class MyCertificate extends pulumi.ComponentResource {
     this.certificateValidation = new aws.acm.CertificateValidation(
       "certificateValidation",
       {
-        certificateArn: certificate.arn,
+        certificateArn: this.certificate.arn,
         validationRecordFqdns: [certificateValidationDomain.fqdn],
       },
       { provider: eastRegion, parent: this }
