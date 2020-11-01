@@ -1,4 +1,5 @@
 /bin/
 /node_modules/
 Pulumi.*.yaml
+index.ts
 secrets.txt
