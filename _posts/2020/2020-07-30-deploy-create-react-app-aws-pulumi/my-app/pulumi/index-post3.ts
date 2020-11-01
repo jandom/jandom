@@ -25,7 +25,7 @@ function getDomainAndSubdomain(
   };
 }
 
-async function main() {
+function main() {
   // Create an AWS resource (S3 Bucket)
   const bucket = new aws.s3.Bucket("my-app.jandomanski.com", {
     bucket: "my-app.jandomanski.com",
@@ -34,6 +34,12 @@ async function main() {
       indexDocument: "index.html",
     },
   });
+
+  // Get the hosted zone by domain name
+  const domainParts = getDomainAndSubdomain("my-app.jandomanski.com");
+  const hostedZoneId = aws.route53
+    .getZone({ name: domainParts.parentDomain }, { async: true })
+    .then((zone) => zone.zoneId);
 
   const tenMinutes = 60 * 10;
 
@@ -51,11 +57,6 @@ async function main() {
     },
     { provider: eastRegion }
   );
-
-  const domainParts = getDomainAndSubdomain("my-app.jandomanski.com");
-  const hostedZoneId = aws.route53
-    .getZone({ name: domainParts.parentDomain }, { async: true })
-    .then((zone) => zone.zoneId);
 
   /**
    *  Create a DNS record to prove that we _own_ the domain we're requesting a certificate for.
@@ -89,6 +90,8 @@ async function main() {
     },
     { provider: eastRegion }
   );
+
+
 
   // distributionArgs configures the CloudFront distribution. Relevant documentation:
   // https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html
@@ -160,13 +163,10 @@ async function main() {
 
   const cdn = new aws.cloudfront.Distribution("cdn", distributionArgs);
 
-  // Get the hosted zone by domain name
-  const hostedZone = await aws.route53.getZone({ name: "jandomanski.com" });
-
   // Create a Route53 A-record
   const record = new aws.route53.Record("targetDomain", {
     name: "my-app.jandomanski.com",
-    zoneId: hostedZone.zoneId,
+    zoneId: hostedZoneId,
     type: "A",
     aliases: [
       {
