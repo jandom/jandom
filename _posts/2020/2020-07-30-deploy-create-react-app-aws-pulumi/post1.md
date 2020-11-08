@@ -71,7 +71,7 @@ But how does a pulumi program look **exactly**?
 Foreshadowing is all the jazz, so why not try some of that here.
 Here is pulumi snippet that creates an S3 bucket called `my-bucket` on AWS. 
 
-![Pulumi example](/docs/images/posts/2020-07-30-deploy-create-react-app-aws-pulumi/carbon.svg)
+![Pulumi example](/docs/images/posts/2020-07-30-deploy-create-react-app-aws-pulumi/carbon-s3-bucket.svg)
 
 # Let's get our hands dirty
 

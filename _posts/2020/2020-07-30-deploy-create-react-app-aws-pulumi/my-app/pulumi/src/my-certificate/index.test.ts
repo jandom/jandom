@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
-import "mocha";
 import * as assert from "assert";
+import "mocha";
 
 pulumi.runtime.setMocks({
   newResource: function (
@@ -8,7 +8,6 @@ pulumi.runtime.setMocks({
     name: string,
     inputs: any
   ): { id: string; state: any } {
-    console.log("hello=", type, inputs);
     switch (type) {
       case "aws:acm/certificate:Certificate":
         return {
@@ -16,13 +15,6 @@ pulumi.runtime.setMocks({
           state: {
             ...inputs,
             arn: "arn:aws:some-cert-arn",
-          },
-        };
-      case "aws:route53/record:Record":
-        return {
-          id: inputs.name + "_id",
-          state: {
-            ...inputs,
           },
         };
       case "aws:acm/certificateValidation:CertificateValidation":
