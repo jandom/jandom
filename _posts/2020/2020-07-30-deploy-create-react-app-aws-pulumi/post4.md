@@ -491,6 +491,111 @@ Pulumi mocks cloud provider responses allowing you to mock that a fake piece of 
 Relative to tests with `jest` that you might be familiar with, things are a bit more awkward here but still okay. 
 
 Let's start by building a unit test for the MyCertificate component. 
+What does this test need to include?
+Well, my certificate internall creates at least two resources:
+- Certificate – `aws:acm/certificate:Certificate`
+- CertificateValidation – `aws:acm/certificateValidation:CertificateValidation`
+
+So for both of these a mock is needed. 
+Pulumi exposes an API for unit testing via `pulumi.runtime.setMocks` that allows for API responses to be mocked. 
+Here is how you can start
+
+```typescript
+// Create a new file in src/my-certificate/index.test.ts
+
+import * as pulumi from "@pulumi/pulumi";
+import * as assert from "assert";
+import "mocha";
+
+pulumi.runtime.setMocks({
+  newResource: function (
+    type: string,
+    name: string,
+    inputs: any
+  ): { id: string; state: any } {
+    switch (type) {
+      case "aws:acm/certificate:Certificate":
+        return {
+          id: inputs.name + "_id",
+          state: {
+            ...inputs,
+            arn: "arn:aws:some-cert-arn",
+          },
+        };
+      case "aws:acm/certificateValidation:CertificateValidation":
+        return {
+          id: inputs.name + "_id",
+          state: {
+            ...inputs,
+          },
+        };
+      default:
+        return {
+          id: inputs.name + "_id",
+          state: {
+            ...inputs,
+          },
+        };
+    }
+  },
+  call: function (token: string, args: any, provider?: string) {
+    return args;
+  },
+});
+```
+
+That's a little verbose but gives us control on the `state` of the returned object. 
+For example, see you the ARN is set on the Certificate via `arn: "arn:aws:some-cert-arn"`. 
+
+Next, we import the module under test, and write down the tests as usual using `describe()` definitions. 
+
+```typescript
+// Continuing in src/my-certificate/index.test.ts
+
+// It's important to import the program _after_ the mocks are defined.
+import * as infra from "./index";
+
+describe("MyCertificate", function () {
+  const targetDomain = "some.domain.com";
+  const resource = new infra.MyCertificate("my-certificate", {
+    targetDomain,
+  });
+  it("must have a targetDomain", function (done) {
+    pulumi.all([resource.certificate.domainName]).apply(([domainName]) => {
+      assert.equal(domainName, targetDomain);
+      done();
+    });
+  });
+  it("must have a certificateValidation", function (done) {
+    pulumi
+      .all([resource.certificateValidation.certificateArn])
+      .apply(([certificateArn]) => {
+        assert.equal(certificateArn, "arn:aws:some-cert-arn");
+        done();
+      });
+  });
+});
+```
+
+Two asserts are declared here:
+– the certificate takes on the `targetDomain` passed from the config,
+- the certificateValidation gets the `arn` from the certificate. 
+
+Simple enough and effective for this very simple component. 
+
+How do you actually run the test itself? Again it's a bit more verbose than ideal...
+
+```shell
+node_modules/.bin/mocha -r ts-node/register src/my-certificate/index.test.ts 
+
+  MyCertificate
+    ✓ must have a targetDomain
+    ✓ must have a certificateValidation
+
+
+  2 passing (7ms)
+
+```
 
 Further reading could include the official documentation for [unit testing](https://www.pulumi.com/docs/guides/testing/unit/).
 
