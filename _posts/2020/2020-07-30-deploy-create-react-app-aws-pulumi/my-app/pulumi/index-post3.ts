@@ -91,8 +91,6 @@ function main() {
     { provider: eastRegion }
   );
 
-
-
   // distributionArgs configures the CloudFront distribution. Relevant documentation:
   // https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html
   // https://www.terraform.io/docs/providers/aws/r/cloudfront_distribution.html

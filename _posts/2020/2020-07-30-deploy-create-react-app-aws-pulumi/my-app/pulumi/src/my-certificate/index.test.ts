@@ -8,7 +8,6 @@ pulumi.runtime.setMocks({
     name: string,
     inputs: any
   ): { id: string; state: any } {
-    console.log("hello=", type, inputs);
     switch (type) {
       case "aws:acm/certificate:Certificate":
         return {
