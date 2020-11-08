@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Refactoring Pulumi applications"
+title:  "Lessons learned refactoring mid-size Pulumi programs"
 date:   2020-11-08 00:00:00 +0100
-categories: pulumi aws react
+categories: pulumi aws
 ---
 
 # Introduction
