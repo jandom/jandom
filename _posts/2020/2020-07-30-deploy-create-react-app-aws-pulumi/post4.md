@@ -1,24 +1,27 @@
 ---
 layout: post
-title:  "Lessons learned refactoring mid-size Pulumi programs"
+title:  "Lessons learned refactoring Pulumi programs"
 date:   2020-11-08 00:00:00 +0100
 categories: pulumi aws
 ---
 
 # Introduction
 
-So you build your first Pulumi program? Maybe even got some workloads running in production?
+So you built your first Pulumi program? Maybe even got some workloads running in production?
 The team loves it, the thing just works. 
 People are adopting it, adding components, importing more of the existing resources. 
 The stacks are getting bigger... and bigger. 
 
-Overnight, what was a simple POC before turns into a 200+ lines of infrastructure code. 
+Overnight, what was a simple proof of concept before turns into a 200+ lines of infrastructure code. 
 You look to the community for some best practices: how to structure this thing, how to break it up?
 How to add some unit tests maybe?
 
-In this article, let's taka a look how to refactor a simple Pulumi program and break it down into more re-usable components, testable – we'll refactor incrementally. 
-This is a problem that many people bump into and most people just want simple rules of thumb to structure their code. 
-For such a common issue, there isn't enough clear guidance there. 
+In this article, let's refactor a Pulumi program and break it down into more re-usable components. 
+The components will be more maintainable and *bingo* testable. 
+Because there is a bunch of changes to make, we'll make so incrementally. 
+
+This is a problem that many people bump into and most people just want/need guidance and simple rules of thumb to structure their code. 
+What should be a really interesting and valuable proposition ("unit testing you infrastructure code") becomes hard to achieve. 
 
 # Getting a "lay of the land"
 
@@ -29,13 +32,13 @@ This is what it looks like now.
 
 ![Before](/docs/images/posts/2020-07-30-deploy-create-react-app-aws-pulumi/carbon-index-post3.png)
 
-Well this is an unholy messy! Let's see if we can get from the mess above to neat and tidy the index.ts below. 
+Well this is an unholy messy! Let's see if we can get from the mess above to neat and tidy the `index.ts` below. 
 
 ![And after!](/docs/images/posts/2020-07-30-deploy-create-react-app-aws-pulumi/carbon-index-post4.png)
 
 This truly sparks Marie Kondo-levels of joy!
 
-# Refactoring
+# Refactoring with Janski
 
 ## Figuring out how to split things out 
 
@@ -43,8 +46,9 @@ Let's have a look at the monster `index.ts` and see which things we might split 
 
 ![And after!](/docs/images/posts/2020-07-30-deploy-create-react-app-aws-pulumi/carbon-index-post3-annotated.png)
 
-So to summarize there is 
-- stuff related to the CDN (S3 bucket, the CDN itself, and the domain record)
+We can already see three potential improvements:
+
+- stuff related to the Content Delivery Network (S3 bucket, the CDN itself, and the domain record)
 - stuff related to the SSL certificate (could come useful, just as a generic "hey get me an SSL for blah")
 - a utility function `getDomainAndSubdomain` and a constant `tenMinutes`
 
@@ -85,7 +89,7 @@ function main() {
 }
 ```
 
-Now the `config.targetDomain` can be used to configure the various resources. 
+Now the `config.targetDomain` can be used to configure the various resources in your program. 
 
 ## Pulling out a simple utils function
 
@@ -124,7 +128,7 @@ export function getDomainAndSubdomain(
 
 ## Refactoring the SSL certificate code
 
-The interesting stuff starts now. In the index.ts, the code looks like this. 
+The interesting stuff starts now. In the `index.ts`, the code looks like this. 
 
 ```typescript
   // Per AWS, ACM certificate must be in the us-east-1 region.
@@ -197,9 +201,13 @@ function main() {
 }
 ```
 
-Wouldn't that be neat, huh? Well, here is how you do that. 
+Wouldn't that be neat, huh? 
+A reusable way to generate an SSL certificate for any domain. 
+Well, here is how you do that. 
 All the same components appear again. 
 The special sauce here is `{ parent: this }` which attaches all the resources to the component resource. 
+
+> Curiously, it can be used to nest multiple components inside another, more than one level deep, when that's needed. 
 
 ```typescript
 // Created a new file in src/my-certificate/index.ts
@@ -289,7 +297,7 @@ export class MyCertificate extends pulumi.ComponentResource {
 ## Refactoring the CDN component
 
 Much like the certificate, the CDN definition is rather verbose. 
-Especially the `DistributionArgs` creation is very verbose. 
+Especially the `DistributionArgs` takes like 70 lines of code :yikes:!
 
 ```typescript 
   const distributionArgs: aws.cloudfront.DistributionArgs = {
@@ -483,6 +491,26 @@ I found nothing about best way to structure pulumi projects, so I just improvise
 - The topic of component resources is covered briefly in the [Programming Model](https://www.pulumi.com/docs/intro/concepts/programming-model/#components) of Pulumi docs,
 - There also appears to be a nice [official tutorial](https://www.pulumi.com/docs/tutorials/aws/s3-folder-component/) with an S3 bucket example.
 
+## Before and after 
+
+
+```shell
+$ pulumi refresh -y
+Previewing refresh (dev):
+     Type                              Name                               Plan     
+     pulumi:pulumi:Stack               my-app-dev                                  
+     ├─ pulumi:providers:aws           east                                        
+     ├─ aws:acm:CertificateValidation  certificateValidation                       
+     ├─ aws:acm:Certificate            certificate                                 
+     ├─ aws:route53:Record             my-app.jandomanski.com-validation           
+     ├─ aws:s3:Bucket                  my-app.jandomanski.com                      
+     ├─ aws:route53:Record             targetDomain                                
+     └─ aws:cloudfront:Distribution    cdn                                         
+ 
+Resources:
+    8 unchanged
+```
+
 # Unit testing resource components
 
 Some of you might be thinking "wait, what? unit testing infrastructure? I thought you could only big integration tests where infrastructure is spun up?". 
@@ -578,7 +606,8 @@ describe("MyCertificate", function () {
 ```
 
 Two asserts are declared here:
-– the certificate takes on the `targetDomain` passed from the config,
+
+- the certificate takes on the `targetDomain` passed from the config,
 - the certificateValidation gets the `arn` from the certificate. 
 
 Simple enough and effective for this very simple component. 
@@ -601,4 +630,8 @@ Further reading could include the official documentation for [unit testing](http
 
 # Conclusions
 
-TODO
+It would be a mistake to say that writing Pulumi unit tests is fun. 
+It feels awkward and clunky, with all my love for the tool that's the best grade I can give. 
+Nick picking here and being a tech snob: many people are really done with Mocha, documented Jest support would be really nice. 
+Still, it's infinitely better than having no unit tests at all. 
+Together with a robust integration tests, it should be entirely possible to bring the best of testing into your infrastructure code. 
