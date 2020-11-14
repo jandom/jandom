@@ -1,5 +1,3 @@
-import * as aws from "@pulumi/aws";
-
 export const tenMinutes = 60 * 10;
 
 // Split a domain name into its subdomain and parent domain names.

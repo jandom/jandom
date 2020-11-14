@@ -14,7 +14,7 @@ export class MyCertificate extends pulumi.ComponentResource {
     },
     opts: any = {}
   ) {
-    super("pkg:index:Certificate", name, {}, opts);
+    super("pkg:index:MyCertificate", name, {}, opts);
     const { targetDomain } = args;
 
     // Per AWS, ACM certificate must be in the us-east-1 region.

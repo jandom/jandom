@@ -37,6 +37,7 @@ Well this is an unholy messy! Let's see if we can get from the mess above to nea
 ![And after!](/docs/images/posts/2020-07-30-deploy-create-react-app-aws-pulumi/carbon-index-post4.png)
 
 This truly sparks Marie Kondo-levels of joy!
+But how do we make it happen?
 
 # Refactoring with Janski
 
@@ -58,14 +59,14 @@ So let's get started in reverse order!.
 
 ## Avoiding domain name repetition
 
-You probably noticed the domain name `my-app.jandomanski.com` being endlessly copy&pasted in the code. 
+You probably noticed the domain name `my-app.somedomain.com` being endlessly copy&pasted in the code. 
 This is obviously not good practice but it was simple enough to get started. 
 It can be simply refactored by using the Pulumi config component. 
 
 In your terminal simply define a new config value
 
 ```shell
-pulumi config set targetDomain my-app.jandomanski.com
+pulumi config set targetDomain my-app.somedomain.com
 ```
 
 This should now update the `Pulumi.dev.yaml` to look something like this 
@@ -74,7 +75,7 @@ This should now update the `Pulumi.dev.yaml` to look something like this
 encryptionsalt: <SOME RANDOM SALT>
 config:
   aws:region: eu-west-1
-  my-app:targetDomain: my-app.jandomanski.com
+  my-app:targetDomain: my-app.somedomain.com
 ```
 
 Now the only thing that remains is to make our Pulumi program `index.ts` aware of this code. 
@@ -140,7 +141,7 @@ The interesting stuff starts now. In the `index.ts`, the code looks like this.
   const certificate = new aws.acm.Certificate(
     "certificate",
     {
-      domainName: "my-app.jandomanski.com",
+      domainName: "my-app.somedomain.com",
       validationMethod: "DNS",
     },
     { provider: eastRegion }
@@ -151,7 +152,7 @@ The interesting stuff starts now. In the `index.ts`, the code looks like this.
    *  See https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html for more info.
    */
   const certificateValidationDomain = new aws.route53.Record(
-    "my-app.jandomanski.com-validation",
+    "my-app.somedomain.com-validation",
     {
       name: certificate.domainValidationOptions[0].resourceRecordName,
       zoneId: hostedZoneId,
@@ -491,8 +492,10 @@ I found nothing about best way to structure pulumi projects, so I just improvise
 - The topic of component resources is covered briefly in the [Programming Model](https://www.pulumi.com/docs/intro/concepts/programming-model/#components) of Pulumi docs,
 - There also appears to be a nice [official tutorial](https://www.pulumi.com/docs/tutorials/aws/s3-folder-component/) with an S3 bucket example.
 
-## Before and after 
+## Visual improvement in project structure
 
+And you know what's great? The structure of the stack resources is visibly improved. 
+Initially the output of `pulumi refresh` looked something like this 
 
 ```shell
 $ pulumi refresh -y
@@ -502,14 +505,34 @@ Previewing refresh (dev):
      ├─ pulumi:providers:aws           east                                        
      ├─ aws:acm:CertificateValidation  certificateValidation                       
      ├─ aws:acm:Certificate            certificate                                 
-     ├─ aws:route53:Record             my-app.jandomanski.com-validation           
-     ├─ aws:s3:Bucket                  my-app.jandomanski.com                      
+     ├─ aws:route53:Record             my-app.somedomain.com-validation           
+     ├─ aws:s3:Bucket                  my-app.somedomain.com                      
      ├─ aws:route53:Record             targetDomain                                
      └─ aws:cloudfront:Distribution    cdn                                         
  
 Resources:
     8 unchanged
 ```
+
+All the resources are a flat list, without any visual linkage or grouping between them. 
+However, after our little refactoring this now looks much cleaner, with resources being grouped logically. 
+
+```shell
+$ pulumi refresh 
+Previewing refresh (dev):
+     Type                                 Name                               Plan           
+     pulumi:pulumi:Stack                  my-app-dev                         running...     
+     ├─ pkg:index:Certificate             my-certificate                                    
+     │  ├─ pulumi:providers:aws           east                                              
+     │  ├─ aws:acm:CertificateValidation  certificateValidation                             
+     │  ├─ aws:route53:Record             my-app.somedomain.com-validation                 
+     │  └─ aws:acm:Certificate            certificate                                       
+     └─ pkg:index:MyApp                   my-app                                            
+        ├─ aws:route53:Record             targetDomain                                      
+        ├─ aws:s3:Bucket                  my-app.somedomain.com             refreshing...  
+        └─ aws:cloudfront:Distribution    cdn                                               
+```
+
 
 # Unit testing resource components
 
@@ -630,8 +653,15 @@ Further reading could include the official documentation for [unit testing](http
 
 # Conclusions
 
-It would be a mistake to say that writing Pulumi unit tests is fun. 
-It feels awkward and clunky, with all my love for the tool that's the best grade I can give. 
-Nick picking here and being a tech snob: many people are really done with Mocha, documented Jest support would be really nice. 
+## Refactoring
+
+Take action before your Pulumi project becomes a long `index.ts` file with hundreds of resources. 
+You can take advantage of compound resources to break code up into smaller, re-usable chunks. 
+Beyond just making the code maintainable, it'll allow you to unit-test the components in isolation. 
+
+## Testing 
+I can't say that I loved writing Pulumi unit tests in Typescript.
+It feels awkward and clunky, relative to my experience with other tools (Jest?). 
+Despite all my love for Pulumi, you won't hear me sing accolades here. 
 Still, it's infinitely better than having no unit tests at all. 
 Together with a robust integration tests, it should be entirely possible to bring the best of testing into your infrastructure code. 
