@@ -24,6 +24,10 @@ As a matter of fact, I'll be ripping off from [Pulumi's own tutorial](https://ww
 But to be completely honest, for a small  page like it probably doesn't make sense. 
 Using GitHub Pages would be just as suitable of an alternative. 
 
+#### Other posts in this series
+
+[Part 1]({% post_url 2020/2020-07-30-deploy-create-react-app-aws-pulumi/post1 %}) – [Part 2]({% post_url 2020/2020-07-30-deploy-create-react-app-aws-pulumi/post2 %}) – [Part 4]({% post_url 2020/2020-07-30-deploy-create-react-app-aws-pulumi/post4 %})
+
 ## The plan
 
 This is it people – it's the 3rd part and so we're entering "level HARD". 

@@ -24,6 +24,10 @@ By way of a re-cap, what did we do last time?
 
 With all this out of the way, we have some new interesting waters to sail. 
 
+#### Other posts in this series
+
+[Part 1]({% post_url 2020/2020-07-30-deploy-create-react-app-aws-pulumi/post1 %}) - [Part 3]({% post_url 2020/2020-07-30-deploy-create-react-app-aws-pulumi/post3 %}) – [Part 4]({% post_url 2020/2020-07-30-deploy-create-react-app-aws-pulumi/post4 %})
+
 ## The plan
 
 So what's new this time around? We'll be putting together the "medium architecture", it's time to make things interesting. 

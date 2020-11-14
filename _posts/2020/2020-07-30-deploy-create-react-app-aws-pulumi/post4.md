@@ -23,6 +23,11 @@ Because there is a bunch of changes to make, we'll make so incrementally.
 This is a problem that many people bump into and most people just want/need guidance and simple rules of thumb to structure their code. 
 What should be a really interesting and valuable proposition ("unit testing you infrastructure code") becomes hard to achieve. 
 
+
+#### Other posts in this series
+
+[Part 1]({% post_url 2020/2020-07-30-deploy-create-react-app-aws-pulumi/post1 %}) – [Part 2]({% post_url 2020/2020-07-30-deploy-create-react-app-aws-pulumi/post2 %}) – [Part 3]({% post_url 2020/2020-07-30-deploy-create-react-app-aws-pulumi/post3 %})
+
 # Getting a "lay of the land"
 
 Over the last three posts in this series, we worked on a simple static web app (React). 

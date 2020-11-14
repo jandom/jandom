@@ -26,6 +26,10 @@ When possible, debug and diagnostic commands are run to make sure things are in 
 
 This will be a big journey but if we can break it up into smaller iterative sub-steps, we'll go from a shack to a castle.
 
+#### Other posts in this series
+
+[Part 2]({% post_url 2020/2020-07-30-deploy-create-react-app-aws-pulumi/post2 %}) – [Part 3]({% post_url 2020/2020-07-30-deploy-create-react-app-aws-pulumi/post3 %}) – [Part 4]({% post_url 2020/2020-07-30-deploy-create-react-app-aws-pulumi/post4 %})
+
 ## The plan
 
 What will we need from AWS? It is going to be a million services or just a few? For now just one: the app will need an S3 bucket to place the transpiled JS files for Create React App. 
