@@ -102,8 +102,8 @@ layout: homepage
         <p>A public repository for OPLS-AA ligand parameters.</p>
       </article>
       <article class="6u$ 12u$(xsmall) work-item">
-        <a href="//lipidbook.bioch.ox.ac.uk/" class="image fit thumb">
-          <img src="//lipidbook.bioch.ox.ac.uk/images/logo-black.svg" alt="" />
+        <a href="//lipidbook.org/" class="image fit thumb">
+          <img src="//lipidbook.org/images/logo-black.svg" alt="" />
         </a>
         <h3>Lipidbook</h3>
         <p>Older brother to ligandbook.</p>
