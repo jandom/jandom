@@ -7,7 +7,6 @@ layout: homepage
 
 <!-- One -->
   <section id="one">
-
     <header class="major">
       <h2>Introduction</h2>
     </header>
@@ -21,8 +20,6 @@ layout: homepage
     <p>I did my undergraduate work in Oxford, studying Biochemistry, earning an MBioch with honors
     and a medal from the Queen and Mick Jagger.
     My graduate project was in Groningen, Netherlands working on molecular dynamics simulations.</p>
-
-    <p>You can <a href="/docs/documents/cv.pdf">get my resume</a> directly.</p>
   </section>
 
 <!-- Two -->
