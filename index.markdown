@@ -11,7 +11,7 @@ layout: homepage
       <h2>Introduction</h2>
     </header>
 
-    <p>Currently I work as an independent software consultant, passionate about improving velocity of software development. "Movement is life" and the faster you can navigate the software landscape the better. This includes some  unexpected results: decisions can be improved quickly and engineers remain happy (because there is no "velocity" without "quality").</p>
+    <p>I work as an independent software consultant, passionate about improving the velocity of software development. "Movement is life" and the faster you can navigate the software landscape the better. High-velocity can include some unexpected results: decisions can be refined quickly and engineers remain happy (because there is no "velocity" without "quality").</p>
     
     <p>In particular, my current areas of interest include cloud engineering (Terraform, Pulumi) and build systems (CMake, Bazel).</p>
 
