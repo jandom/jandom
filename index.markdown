@@ -5,79 +5,37 @@
 layout: homepage
 ---
 
-<!-- One -->
-  <section id="one">
+<!-- intro -->
+  <section id="intro">
     <header class="major">
       <h2>Introduction</h2>
     </header>
 
-    <p>Starting from 2017, I have been a co-founder and CTO at Labstep. Labstep set out to make scientists more productive and creative. So far this involved building a software tool at <a href="//www.labstep.com">www.labstep.com</a>.</p>
+    <p>Currently I work as an independent software consultant, passionate about improving velocity of software development. "Movement is life" and the faster you can navigate the software landscape the better. This includes some  unexpected results: decisions can be improved quickly and engineers remain happy (because there is no "velocity" without "quality").</p>
+    
+    <p>In particular, my current areas of interest include cloud engineering (Terraform, Pulumi) and build systems (CMake, Bazel).</p>
+
+  </section>
+
+<!-- biography -->
+  <section id="biography">
+    <header class="major">
+      <h2>Biography</h2>
+    </header>
+    <p>From 2017 to 2020, I have been a co-founder and CTO at Labstep. Labstep set out to make scientists more productive and creative, by providing a best-in-class electronic notebook experience <a href="//www.labstep.com">www.labstep.com</a>.</p>
 
     <p>Under the supervision of simulation masterminds, Mark Sansom (Oxford University) and Robert Best (NIH), I'm working on membrane protein folding. </p>
 
-    <p>I used to work as a scientific associate in D. E. Shaw Research, New York City. The focus of this work (among other things) were transient/cryptic protein pockets identified via ANTON simulations in phosphatases PTP1B and Ship2. The aim was to predict small molecules that would bind to these pockets.</p>
+    <p>While at D. E. Shaw Research, New York City, I used ultra-long molecular dynamics simulations to identify cryptic binding pockets in previously undruggable phosphatases. </p>
 
     <p>I did my undergraduate work in Oxford, studying Biochemistry, earning an MBioch with honors
     and a medal from the Queen and Mick Jagger.
-    My graduate project was in Groningen, Netherlands working on molecular dynamics simulations.</p>
+    My graduate project was in Groningen, Netherlands working on protein-lipid interactions, using coarse-grained molecular dynamics simulations and the Martini model.</p>
   </section>
 
-<!-- Two -->
-  <section id="two">
-    <h2>Publications</h2>
-    <div class="row">
-      <div class="12u 12u$(xsmall)">
-        <ul>
-          <li>
-            E Yamamoto, J Domański, FB Naughton, RB Best, AC Kalli, PJ Stansfeld, MSP Sansom,
-            <i>Multiple Lipid Binding Sites Determine the Affinity of PH Domains for Phosphoinositide-Containing Membranes</i>
-          </li>
-          <li>
-            Richard J Gowers, Max Linke, Jonathan Barnoud, Tyler John Edward Reddy, Manuel N Melo, Sean L Seyler, Jan Domanski, David L Dotson, Sébastien Buchoux, Ian M Kenney, Oliver Beckstein,
-            <i>MDAnalysis: a Python package for the rapid analysis of molecular dynamics simulations</i>
-          </li>
-          <li>
-            Matthieu Chavent, Dimple Karia, Antreas C Kalli, Jan Domański, Anna L Duncan, George Hedger, Phillip J Stansfeld, Elena Seiradake, E Yvonne Jones, Mark SP Sansom,
-            <i>Interactions of the EphA2 kinase domain with PIPs in membranes: implications for receptor function</i>
-            <a class="external" href="https://doi.org/10.1016/j.str.2018.05.003">https://doi.org/10.1016/j.str.2018.05.003</a>
-          </li>
-          <li>
-              J. Domański, M.S.P. Sansom, P.J. Stansfeld, R.B. Best,
-              <i>Balancing Force Field Protein–Lipid Interactions To Capture Transmembrane Helix–Helix Association</i>
-              <a class="external" href="https://pubs.acs.org/doi/abs/10.1021/acs.jctc.7b00983">https://pubs.acs.org/doi/abs/10.1021/acs.jctc.7b00983</a>
-          </li>
-          <li>
-              J. Domański, O. Beckstein, B. Iorga,
-              <i>Ligandbook - an online repository for small and drug-like molecule force field parameters</i>
-              <a class="external" href="https://www.ncbi.nlm.nih.gov/pubmed/28130228">https://www.ncbi.nlm.nih.gov/pubmed/28130228</a>
-          </li>
-          <li>
-              J. Domański, G. Hedger, R. Best, P.J. Stansfeld, M.S.P. Sansom,
-              <i>Convergence and Sampling in Determining Free Energy Landscapes for Membrane Protein Association</i>
-              <a class="external" href="https://pubs.acs.org/doi/abs/10.1021/acs.jpcb.6b08445">DOI: 10.1021/acs.jpcb.6b08445</a></li>
-          <li>
-              G. Hedger, S.L. Rouse, J. Domański, M. Chavent, H. Koldsø, M.S.P. Sansom,
-              <i>Lipid Loving ANTs: Cardiolipin Interactions and the Organization of the Adenine Nucleotide Translocase in Model Mitochondrial Membranes</i>
-              <a href="https://pubs.acs.org/doi/abs/10.1021/acs.biochem.6b00751">DOI 10.1021/acs.biochem.6b00751</a></li>
-          <li>
-              J. Domański, S.J. Marrink, L.V. Schäfer,
-              <i>Transmembrane helices can induce domain formation in crowded model membranes</i>,
-              Biochim. Biophys. Acta (2012) 984-94
-              <a class="external" href="https://www.ncbi.nlm.nih.gov/pubmed/21884678">21884678</a>
-          </li>
-          <li>
-              J. Domański, P.J. Stansfeld, M.S.P. Sansom, O. Beckstein,
-              <i>Lipidbook: a public repository for force-field parameters used in membrane simulations</i>,
-              J. Membr. Biol. (2010) 255-8
-              <a class="external" href="https://www.ncbi.nlm.nih.gov/pubmed/20700585">20700585</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="three">
-    <h2>Other work</h2>
+<!-- software -->
+  <section id="software">
+    <h2>Software projects</h2>
     <div class="row">
       <article class="6u 12u$(xsmall) work-item">
         <a href="//www.labstep.com/" class="image fit thumb">
@@ -124,3 +82,43 @@ layout: homepage
       </article>
     </div>
   </section>
+
+<!-- publications -->
+  <section id="publications">
+    <h2>Publications</h2>
+    <p>Full list of publications can be found on my<a href="https://scholar.google.com/citations?user=URTxmbMAAAAJ">Google Scholar profile</a></p>
+    <div class="row">
+      <div class="12u 12u$(xsmall)">
+        <ul>
+          <li>
+              Paulo CT Souza, Riccardo Alessandri, Jonathan Barnoud, Sebastian Thallmair, Ignacio Faustino, Fabian Grünewald, Ilias Patmanidis, Haleh Abdizadeh, Bart MH Bruininks, Tsjerk A Wassenaar, Peter C Kroon, Josef Melcr, Vincent Nieto, Valentina Corradi, Hanif M Khan, Jan Domański, Matti Javanainen, Hector Martinez-Seara, Nathalie Reuter, Robert B Best, Ilpo Vattulainen, Luca Monticelli, Xavier Periole, D Peter Tieleman, Alex H de Vries, Siewert J Marrink
+              <i>Martini 3: a general purpose force field for coarse-grained molecular dynamics</i>
+              Nature Methods
+              <a class="external" href="https://www.nature.com/articles/s41592-021-01098-3">https://www.nature.com/articles/s41592-021-01098-3</a>
+          </li>
+          <li>
+              E Yamamoto, J Domański, FB Naughton, RB Best, AC Kalli, PJ Stansfeld, MSP Sansom,
+              <i>Multiple Lipid Binding Sites Determine the Affinity of PH Domains for Phosphoinositide-Containing Membranes</i>
+              Science advances
+              <a class="external" href="https://advances.sciencemag.org/content/advances/6/8/eaay5736.full.pdf">https://advances.sciencemag.org/content/advances/6/8/eaay5736.full.pdf</a>
+          </li>
+          <li>
+              Richard J Gowers, Max Linke, Jonathan Barnoud, Tyler John Edward Reddy, Manuel N Melo, Sean L Seyler, Jan Domanski, David L Dotson, Sébastien Buchoux, Ian M Kenney, Oliver Beckstein,
+              <i>MDAnalysis: a Python package for the rapid analysis of molecular dynamics simulations</i>
+              <a class="external" href="https://permalink.lanl.gov/object/tr?what=info:lanl-repo/lareport/LA-UR-19-29136">https://permalink.lanl.gov/object/tr?what=info:lanl-repo/lareport/LA-UR-19-29136</a>
+          </li>
+          <li>
+              J. Domański, M.S.P. Sansom, P.J. Stansfeld, R.B. Best,
+              <i>Balancing Force Field Protein–Lipid Interactions To Capture Transmembrane Helix–Helix Association</i>
+              <a class="external" href="https://pubs.acs.org/doi/abs/10.1021/acs.jctc.7b00983">https://pubs.acs.org/doi/abs/10.1021/acs.jctc.7b00983</a>
+          </li>
+          <li>
+              J. Domański, G. Hedger, R. Best, P.J. Stansfeld, M.S.P. Sansom,
+              <i>Convergence and Sampling in Determining Free Energy Landscapes for Membrane Protein Association</i>
+              <a class="external" href="https://pubs.acs.org/doi/abs/10.1021/acs.jpcb.6b08445">DOI: 10.1021/acs.jpcb.6b08445</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+

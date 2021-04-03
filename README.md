@@ -15,6 +15,8 @@ Setup jekyll on ubuntu following instructions
 ### Mac Os 
 
 sudo gem install bundler
+bundle config set --local path 'vendor/bundle'
+bundle install 
 
 Install dependancies
 
