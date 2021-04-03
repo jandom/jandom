@@ -7,8 +7,14 @@ A working ruby version that's higher than ubuntu's default
 
 ## Installation
 
+### Ubuntu
+
 Setup jekyll on ubuntu following instructions 
 - https://jekyllrb.com/docs/installation/ubuntu/
+
+### Mac Os 
+
+sudo gem install bundler
 
 Install dependancies
 
