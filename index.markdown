@@ -86,7 +86,7 @@ layout: homepage
 <!-- publications -->
   <section id="publications">
     <h2>Publications</h2>
-    <p>Full list of publications can be found on my<a href="https://scholar.google.com/citations?user=URTxmbMAAAAJ">Google Scholar profile</a></p>
+    <p>Full list of publications can be found on my <a href="https://scholar.google.com/citations?user=URTxmbMAAAAJ">Google Scholar profile</a></p>
     <div class="row">
       <div class="12u 12u$(xsmall)">
         <ul>
