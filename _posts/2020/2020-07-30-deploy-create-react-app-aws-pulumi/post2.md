@@ -185,7 +185,7 @@ function main() {
     zoneId: hostedZone.zoneId,
     type: "A",
     aliases: [{
-        zoneId: hostedZoneId,
+        zoneId: bucket.hostedZoneId,
         name: bucket.websiteDomain,
         evaluateTargetHealth: true,
     }],
