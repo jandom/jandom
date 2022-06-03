@@ -10,11 +10,7 @@ layout: homepage
     <header class="major">
       <h2>Introduction</h2>
     </header>
-
-    <p>I work as an independent software consultant, passionate about improving the velocity of software development. "Movement is life" and the faster you can navigate the software landscape the better. High-velocity can include some unexpected results: decisions can be refined quickly and engineers remain happy (because there is no "velocity" without "quality").</p>
-    
-    <p>In particular, my current areas of interest include cloud engineering (Terraform, Pulumi) and build systems (CMake, Bazel).</p>
-
+    <p>My current job is at Charm Theraputics. I'm building technical teams around research, platform/infrastructure and data engineering. My background in life-sciences great helps in this position, because our mission is to improve drug discovery via machine learning, so I'm capable of bridging the gap between researchers and engineers (or at least I try my best!)</p>
   </section>
 
 <!-- biography -->
@@ -22,7 +18,9 @@ layout: homepage
     <header class="major">
       <h2>Biography</h2>
     </header>
-    <p>From 2017 to 2020, I have been a co-founder and CTO at Labstep. Labstep set out to make scientists more productive and creative, by providing a best-in-class electronic notebook experience <a href="//www.labstep.com">www.labstep.com</a>.</p>
+    <p>From 2021 to 2022, I worked as an independent software consultant, passionate about improving the velocity of software development. "Movement is life" - the faster you can navigate the software landscape the better. High-velocity can include some unexpected results: decisions can be refined quickly and engineers remain happy (because there is no "velocity" without "quality"). My interests then include cloud engineering (Pulumi) and build systems (Bazel).</p>
+
+    <p>From 2017 to 2021, I have been a co-founder and CTO at Labstep. Labstep set out to make scientists more productive and creative, by providing a best-in-class electronic notebook experience <a href="//www.labstep.com">www.labstep.com</a>.</p>
 
     <p>Under the supervision of simulation masterminds, Mark Sansom (Oxford University) and Robert Best (NIH), I'm working on membrane protein folding. </p>
 
