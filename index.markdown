@@ -10,7 +10,7 @@ layout: homepage
     <header class="major">
       <h2>Introduction</h2>
     </header>
-    <p>My current job is at Charm Theraputics. I'm building technical teams around research, platform/infrastructure and data engineering. My background in life-sciences great helps in this position, because our mission is to improve drug discovery via machine learning, so I'm capable of bridging the gap between researchers and engineers (or at least I try my best!)</p>
+    <p>My current job is at Charm Therapeutics. Our mission is to improve drug discovery via machine learning. This requires expert engineering skill as well as top-notch science. We're building technical teams around research, platform/infrastructure and data engineering, please ping me on LinkedIn if you'd like to join.</p>
   </section>
 
 <!-- biography -->
