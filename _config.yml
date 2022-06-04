@@ -44,15 +44,12 @@ google_analytics: UA-34550816-1
 # their entries' file path in the `include:` list.
 
 exclude:
-  - .sass-cache/
   - .jekyll-cache/
-  - gemfiles/
+  - .sass-cache/
   - Gemfile
   - Gemfile.lock
+  - gemfiles/
+  - infra/
   - node_modules/
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
-  - pulumi/
+  - vendor/
   - _posts/2020/2020-07-30-deploy-create-react-app-aws-pulumi/my-app

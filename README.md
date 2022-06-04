@@ -12,15 +12,14 @@ A working ruby version that's higher than ubuntu's default
 Setup jekyll on ubuntu following instructions 
 - https://jekyllrb.com/docs/installation/ubuntu/
 
-### Mac Os 
+### macOS
 
-sudo gem install bundler
-bundle config set --local path 'vendor/bundle'
-bundle install 
+The default macOS comes with a ruby interpreter that's very old. Use homebrew to upgrade ruby. 
 
-Install dependancies
-
-    bundle install
+    brew install ruby@2.7
+    sudo gem install bundler
+    bundle config set --local path 'vendor/bundle'
+    bundle install 
 
 ## Getting started
 
@@ -55,12 +54,13 @@ ruby -r rubygems -e 'require "jekyll-import";
 
 ## Development 
 
-To update dependancies
+To update dependencies
 
     bundle update
 
-To install dependancies on a clean slat
+To install dependencies on a clean slate
     
+    rm Gemfile.lock
     bundle install
 
 To serve on localhost
