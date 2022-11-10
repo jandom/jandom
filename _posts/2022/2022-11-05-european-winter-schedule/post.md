@@ -15,8 +15,6 @@ Start the day EARLY, with your first slot of work between 8am–noon. You'll fin
 
 Then comes then comes the best part: a JUMBO lunch break 12pm–2pm, maybe longer. Get lunch, get out, meet friends, get some sun, go for a run, do groceries. Do whatever, as long as you'll get some of that daylight it'll be worth it. 
 
-![](/docs/images/posts/2022-11-05-european-winter-schedule/post.png)
-
 {% include image.html url="/docs/images/posts/2022-11-05-european-winter-schedule/post.png" description="Here is my schedule" %}
 
 After lunch, back in the trenches for another 4 hours: 2pm–6pm. It's like a reset after taking a large break and will go so fast. Chances are you'll be seen as more hard-working: people pay attention to silly things like when people leave, so despite chilling more, you'll get your boss to love you more. 
