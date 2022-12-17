@@ -10,7 +10,11 @@ layout: homepage
     <header class="major">
       <h2>Introduction</h2>
     </header>
-    <p>My current job is at Charm Therapeutics. Our mission is to improve drug discovery via machine learning. This requires expert engineering skill as well as top-notch science. We're building technical teams around research, platform/infrastructure and data engineering, please ping me on LinkedIn if you'd like to join.</p>
+    <p>Thanks for stopping by! My name is Jan, I'm interested in science (chemistry, biology, physics), computers and math. I'm also a melanoma survivor, which isn't a funny thing to share.</p>
+
+    <p>My current job is at Charm Therapeutics. Our mission is to improve drug discovery via machine learning. This requires expert engineering skill as well as top-notch science. We're building technical teams around research, platform/infrastructure and data engineering, please ping me on LinkedIn if you'd like to join.</p>\
+
+    <p>In recognition of my life-long passion for biscotti, I received the Mulino Bianco Biscotazza medal of valor.</p>
   </section>
 
 <!-- biography -->
