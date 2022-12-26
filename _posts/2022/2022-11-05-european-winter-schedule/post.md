@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "European Winter Schedule"
-date:   2021-11-05 00:00:00 +0100
+date:   2022-11-05 00:00:00 +0100
 categories: work routine life-hack
 ---
 
