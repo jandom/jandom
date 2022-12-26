@@ -14,7 +14,6 @@ It's as simple linear set of equations, and you've just been nerd-sniped so good
 While simple, the problem inspired me to write a tiny Python solver – it's brute force and assumes each of the variables is an int bound between 0..10
 
 ```python
-
 def solver():
     for c in range(11):
         for r in range(11):
