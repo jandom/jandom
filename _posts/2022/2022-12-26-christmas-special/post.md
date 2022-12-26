@@ -5,7 +5,7 @@ date:   2022-12-26 00:00:00 +0100
 categories: puzzles python
 ---
 
-Among the various group chats, the family group chat on whatsapp is king. This Christmas, a little puzzle has surfaced, courtesy of Flavio.
+Among the various group chats, the family group chat on whatsapp is king. This Christmas, a little puzzle has surfaced on the chat, courtesy of Flavio. What this says about our family chats, is another matter..
 
 {% include image.html url="/docs/images/posts/2022-12-26-christmas-special/post.jpeg" description="Here is the puzzle" %}
 
