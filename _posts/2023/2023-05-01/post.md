@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Which companies it makes sense to work on... and for which it doesn't"
-date:   2023-05-02 00:00:00 +0100
+date:   2023-05-01 00:00:00 +0100
 categories: companies startups
 ---
 
