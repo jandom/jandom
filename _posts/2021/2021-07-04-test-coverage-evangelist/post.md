@@ -5,6 +5,16 @@ date:   2021-07-04 00:00:00 +0100
 categories: testing unit test coverage
 ---
 
+**2024-06 update** 
+
+Internet has this funny property of making your beliefs/opinions expressed at one time immortal and seem like held forever. And this rather short post continues to haunt me: two separate candidates have mentioned it (concerned). Presumably candidates think that I will put the gun to their head and ask for 100% test coverage. I won't, I promise... Not over coverage anyway... 
+
+100% coverage was definitely the answer at one point in Labstep's history but the team that inspired that idea departed from it after I moved on. 100% coverage is definitely not appropriate for fast-exploration code-bases (ML Research, SAAS looking for product-market fit). However, I'd still argue that it's a good idea for any maturing code – I've seen to many code-bases become unmaintainable because of "pragmatic" decisions to maybe not test some code because it's "hard". What that general vibe is driven by is another question... 
+
+More introspectively this post remains a clear example of confirmation bias: I held a belief that high test coverage is a good thing, and found some random interview that supported the notion.
+
+**Original post** 
+
 This weekend I stumbled upon a remarkable conversation: 
 
 > Richard: [...] It’s pretty easy to get up to 90 or 95% test coverage. Getting that last 5% is really, really hard and it took about a year for me to get there, but once we got to that point, we stopped 
