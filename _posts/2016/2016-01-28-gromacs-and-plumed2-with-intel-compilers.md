@@ -9,4 +9,6 @@ blogger_id: tag:blogger.com,1999:blog-2967594273163880803.post-18328666693539501
 blogger_orig_url: https://jandomanski.blogspot.com/2016/01/gromacs-and-plumed2-with-intel-compilers.html
 ---
 
-For all you performance junkies, no guarantees tho!<br /><br />https://gist.github.com/jandom/4bd1610e1892c61fccb0
+For all you performance junkies, no guarantees tho!
+
+https://gist.github.com/jandom/4bd1610e1892c61fccb0
