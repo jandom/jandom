@@ -28,9 +28,11 @@ twitter_username: jandom_random
 github_username:  jandom
 
 # Build settings
-theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-remote-theme
+
+remote_theme: jekyll/minima  # grab the “master” repo on GitHub
 
 # Google Analytics
 google_analytics: G-N1NW3RGG60

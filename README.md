@@ -16,7 +16,7 @@ Setup jekyll on ubuntu following instructions
 
 The default macOS comes with a ruby interpreter that's very old. Use homebrew to upgrade ruby. 
 
-    brew install ruby@2.7
+    brew install ruby@3.4
     gem install bundler
     bundle config set --local path 'vendor/bundle'
     bundle install 
