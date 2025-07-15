@@ -34,6 +34,9 @@ plugins:
 
 remote_theme: jekyll/minima  # grab the “master” repo on GitHub
 
+minima:
+  skin: auto
+
 # Google Analytics
 google_analytics: G-N1NW3RGG60
 
