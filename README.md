@@ -12,14 +12,22 @@ A working ruby version that's higher than ubuntu's default
 Setup jekyll on ubuntu following instructions 
 - https://jekyllrb.com/docs/installation/ubuntu/
 
+```bash
+    gem install bundler
+    bundle config set --local path 'vendor/bundle'
+    bundle install --gemfile=Gemfile-linux.lock
+```
+
 ### macOS
 
 The default macOS comes with a ruby interpreter that's very old. Use homebrew to upgrade ruby. 
 
+```bash
     brew install ruby@3.4
     gem install bundler
     bundle config set --local path 'vendor/bundle'
-    bundle install 
+    bundle install --gemfile=Gemfile-mac.lock
+```
 
 ## Getting started
 
