@@ -5,6 +5,9 @@ date:   2023-05-01 00:00:00 +0100
 categories: companies startups
 ---
 
+> **Update (2025-10):**  
+> This post didn't age that well!
+
 Recently I was approached by an old co-worker and good colleague to consider re-joining a place we used to work together. I pretty much declined and probably offended him a bit (sorry!) but it really got me thinking about which opportunities I'd like to take vs pass on. 
 
 Maybe this view comes from a personal bias. Surviving cancer definitely sharpens the focus. There is more time for family and friends, and more time for meaningful work, but less time for money for the sake of money. Can't take status to the grave with you!
