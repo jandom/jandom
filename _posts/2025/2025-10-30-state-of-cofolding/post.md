@@ -60,7 +60,7 @@ With the (dire) state of the biotech investment, everyone seems to be cuddling c
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Excited to share Pearl from Genesis Molecular AI (yes, we&#39;ve updated our name!): the first co-folding model to clearly surpass AlphaFold 3 on protein-ligand structure prediction.<br><br>Unlike LLMs that train on vast public data, drug discovery AI faces fundamental data scarcity. Our… <a href="https://t.co/Jmc2FQ65mA">pic.twitter.com/Jmc2FQ65mA</a></p>&mdash; Genesis Molecular AI (@genesistxai) <a href="https://twitter.com/genesistxai/status/1983275689643229286?ref_src=twsrc%5Etfw">October 28, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-As an ex-competitor of theirs, this is certainly interesting to me, since we also focused on small molecules. We were [able to match AF3 but not meaningfully exceeded it](https://charmtx.com/dragon-a-top-performing-structure-prediction-model-for-small-molecule-discovery/). The Genesis crew significatly outperforms AF3 on small-molecule structure prediction. 
+As an ex-competitor of theirs, this is certainly interesting to me, since we also focused on small molecules. We were [able to match AF3 but not meaningfully exceeded it](https://charmtx.com/dragon-a-top-performing-structure-prediction-model-for-small-molecule-discovery/). The Genesis crew significantly outperforms AF3 on small-molecule structure prediction. 
 
 The code and model remains closed-source, even to academics/non-commercial users. The [technical report](https://genesis.ml/wp-content/uploads/2025/10/pearl_technical_report.pdf) which accompanied the release is sparse on the details but if you've worked in this field, the subtle nudges within are pretty clear: some mixture of architecture changes, and synthetic data generation.
 
@@ -74,83 +74,111 @@ I personally share the enthusiasm of the post below :D
 
 OF3 certainly looks to be more "opener" than "open-weights" competitors. To be fully and meaningfully open, the models should disclose their training code and data. Weights and inference code just allows the model to be run "as is". 
 
-What's important for OF3, and more broadly the open-model community, is to move beyond AF3 and into the future. The OF3 crew has the (massive) benefit of multiple talents in the house (tech + science, academia + industry) – brining those together will be the key to success. 
+What's important for OF3, and more broadly the open-model community, is to move beyond AF3 and into the future. The OF3 crew has the (massive) benefit of multiple talents in the house (tech + science, academia + industry) – bringing those together will be the key to success. 
 
 
 ## Challenges and ideas
 
-Many of these challenges are intertwined... it's hard to make a clear separation. This section is more rambling than I'd like! 
-
-
 ### Generalization
 
-Targets with no structural data remain out of reach of these models. 
-Interpolation close to training data is decent but performance drops with distance from what the model has seen in training. 
-Key benchmark here is Runs'N'Poses (RnP). 
-This is a particular challenge perhaps in biologics, where the hypervariable Ab regions by definition don't have many "similar" sequences in the training dataset. 
+**The problem** Performance drops sharply on targets not seen in training. Models interpolate well but struggle to extrapolate.
 
-Opportunities:
-- "more data"
-- better architectures – we've seen already how architecture changes can increase what the models can squeeze out of the same data.
+**Why it matters** Biologics – where the hypervariable Ab regions by definition don't have many "similar" sequences in the training dataset. Small molecules – targets with limited structural data.
 
-### Validation
+**What could work**
+- better architectures to increase what the model can squeeze out of the same data,
+- federated learning to provide proprietary data,
+- better measuring sticks, Runs'N'Poses (RnP) is a great start.
 
-Many of the AF3 clones have not seen the "action" of a real discovery program. The public structure prediction benchmarks are a "minimum bar" to pass. Back-testing on industry data (preferably data not seen in training) is a much better idea. Better yet, blind prospective validation – but that takes time and money. 
+### Validation beyond benchmarks
 
-### Disorder
+**The problem** The public structure prediction benchmarks are a "minimum bar" to pass. Most of the AF3 clones have not been tested in discovery.
 
-Protein dynamics and protein disorder comes in many different flavors: from fully disordered proteins, to those that fold upon contact with others "partially disoredered". On the more humble end, you could think as allostery as the minimal case of protein disorder albeit that's a bit unorthodox. None of the models can currently model this, not even close. The models are "structure predictors" and don't appear to have a great understanding of protein physics/dynamics.
+**Why it matters** The benchmarks don't fully capture the expectations of a medicinal chemist, trust is lost when used prospectively and artifacts are observed.
 
-Opportunity
-- Incorporating experimental stability data, or synthetic MD data
-- Incorporating experimental HDX-MS, or radical-reactivity data to probe the dynamics/flexibility
-- The simulation community is already making strides, for example (AF CALVADOS)[https://www.biorxiv.org/content/10.1101/2025.10.19.683306v1].
+**What could work**
+- Better benchmarks, with more medicinal chemistry focus
+- Back-testing on industry data (preferably data not seen in training).
+- Blind prospective validation – but that takes time and money. 
 
+### Protein dynamics (including disorder)
 
-### Data
+Protein dynamics and protein disorder comes in many different flavors: from fully disordered proteins, to those that fold upon contact with others "partially disordered". On the more humble end, you could think as allostery as the minimal case of protein disorder albeit that's a bit unorthodox. 
 
-In contrast to LLMs, these models are relatively data-starved. Self-distillation (training on your own predictions) has been shown as a good strategy around that. The problem here is "exhaust gas recirculation", if your own predictions or calculations you're training on are crap, your output will be crap. Garbage-in, garbage-out.
+**The problem** Current generation of models are great "structure predictors" and don't appear to have a great understanding of protein physics/dynamics, folding mechanism or kinetics/thermodynamics is out of reach.
 
-Fine-tuning on proprietary data has been shown to be a useful technique for these models (again marked contrast to LLMs, where RAG has won).
+**Why it matters**
+Many drug targets are partially disordered or undergo conformational changes upon binding. Single static structures miss the ensemble.
 
-Opportunities:
-- synthetic data, highlighted as important by the Genesis team, and used by the Boltz-2,
-- careful data curation, incorporating experimental sources of error,
-- "MOAR DATA" – OpenBind experimental data generation project.
+**What could work**
+- Training on experimental stability/flexibility data (HDX-MS, radical reactivity)
+- Synthetic MD trajectories, e.g., [AF CALVADOS](https://www.biorxiv.org/content/10.1101/2025.10.19.683306v1)
+
+### Data scarcity and quality
+
+**The problem** Unlike LLMs trained on the entire internet, structure models are data-starved. Self-distillation risks "exhaust gas recirculation"—training on your own mediocre predictions degrades quality.
+
+**Why it matters**: More data = better performance, but only if the data is high-quality. Garbage in, garbage out.
+
+**What could work**
+- Synthetic data generation, with careful curation
+    - Molecular dynamics (Genesis, Boltz-2)
+    - From affinity datasets with closely-linked structural data
+- Experimental data generation for structure and affinity (OpenBind consortium)
+- Fine-tuning on proprietary data (works better than RAG for these models)
 
 
 ### Scaling laws
 
-Not really seen in this field yet but the Genesis team has indicated that something might be going on there with extensive use of synthetic data.
+**The problem** We haven't seen clear scaling laws emerge yet, where same architecture can be scaled up to a larger model and unlock new capabilities. 
+
+**Why it matters** Scaling laws drive investment, without them only data/architecture breakthrough are needed. 
+
+**What we're learning** Genesis hints at scaling with synthetic data. More investigation needed.
+
 
 ### Chemistry awareness
 
-This point is often most challenging to tech-only teams, because it's hard to express/capture what it means. What does it mean if a ligand pose is non-physical to a medchemist/crystallographer? Is it subjective, or can we define metrics to capture it?
+**The problem** Models still generate non-physical geometries – protein and ligand impacted – bad bond angles, steric clashes, impossible ring conformations.
 
-Opportunities
-- issues still persist with ligand/protein geometries 
-- make the model understand chemistry features (bond orders, protonation, chirality, ring puckering, non-physical intra-molecular contacts – I can just hear people running to ChatGPT to ask what these are),
-- water co-folding, as many medical chemists will tell you, including this feature is a make or break of many small molecule discovery programs.
+**Why it matters** Medicinal chemists won't trust poses that violate basic chemistry. "This nitrogen can't be sp3 in this fragment" = loss of trust in the tech.
+
+**What could work**
+- Improve the handling of chemistry features: bond orders, protonation, chirality, ring puckering, non-physical intra-molecular contacts,
+- Physics-based geometry constraints during training/inference,
+- *Water co-folding* Many discovery programs hinge on explicit water interactions—currently missing from all models.
 
 
 ### Affinity prediction
 
-My personal take is that the current affinity prediction models have room to improve and don't appear to generalize well to targets not seen in training. Affinity/activity data is fabulously numerous-but-inconsistent. 
+**The problem** Current affinity models appear to overfit training distributions. Performance drops on novel scaffolds or targets not in training data.
 
-Opportunity:
-- split the problem into two: binder/non-binder separation (between different series, weak binders), and accurate affinity prediction (within a series),
-- synthetic data using affinity datasets, with "guessed" PDB structures
+**Why it matters** In lead optimization, accurate ΔΔG (relative binding affinity) prediction can save money spent on synthesis and experimental validation.
 
-### Training regime
+**What could work**:
+- Split the affinity problem into two: (1) binder/non-binder separation between different series, and (2) accurate affinity prediction within a series,
+- Synthetic data: pair known affinity datasets with predicted/AlphaFilled structures
 
-These models are not huge, you can train one with just 64 A100s, but they are getting complicated to train. Multi-stage training regimes are not uncommon but make any reproduction efforts more complicated and the whole ML experience "fiddly". 
 
-### Model architecture
+### Training complexity
 
-Hard to tell what will move the needle here. More diffusion and flow-matching? 
+**The problem** Multi-stage training regimes make reproduction difficult. These models aren't as big as LLMs (64 A100s suffices) but the "fiddly" training process creates replication barriers.
 
-Opportunity
-- all-atom representation, that's likely a pipedream because of memory requirements of the attention model. However, some increased-resolution "coarse-grained" representation for polymer tokens (2-3 tokens per residue) could be achievable 
+**Why it matters** Complex training = fewer groups can validate/extend the work, because they have to "guess" the training stage parameters.
+
+
+### Architecture frontiers
+
+
+**The problem** Hard to predict what architecture changes will matter. Attention mechanisms have memory limitations for all-atom polymer representations.
+
+**Why it matters** Current generation of models could be permanently limited because of the loss of all-atom representation, needed to save memory. 
+
+**What could work**
+
+- Pearl hint at the return of SO(3)-equivariant architecture (present in AF2 but removed in AF3)
+- Improved coarse-graining: 2-3 tokens per residue instead of 1 (captures more geometry without full all-atom overhead)
+- Hybrid approaches: coarse for bulk structure, all-atom for binding site (already the case for PTM residues, which are all-atom)
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Why do inverse folding methods hate bulky aromatics so much? From the BoltzGen paper <a href="https://t.co/BhDcOHuk42">pic.twitter.com/BhDcOHuk42</a></p>&mdash; Diego del Alamo (@DdelAlamo) <a href="https://twitter.com/DdelAlamo/status/1982833984859164778?ref_src=twsrc%5Etfw">October 27, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
