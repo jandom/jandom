@@ -12,8 +12,9 @@ Last week, the co-folding world exploded: Pearl, OpenFold3, and BoltzGen all dro
 
 Structure prediction is a 2nd order thing to drug-discovery programs, where people really care about: 
 
-1. finding new hit molecules, and 
-2. optimizing existing molecules. 
+1.⁠ ⁠Finding therapeutic targets to go after,
+2.⁠ ⁠⁠finding hit molecules for those targets, and
+3.⁠ ⁠⁠optimizing those hit molecules.
 
 In the discovery context, structure prediction is a foundation, a "means to an end", not the goal itself – that's markedly different from a tech crowd, where perhaps "making the number go higher" (benchmarks) is seen as sufficient.
 
@@ -43,7 +44,7 @@ Simple inference is the level of "kicking the tires", barely above Hugging Face 
 | **Boltz-1x** | Boltz | ✅ Yes (MIT) | Boltz-1 variant. |
 | **Boltz-2** | Boltz | ❔ Weights-only (MIT), no training code, no data | Affinity prediction. |
 | **BoltzGen** | Boltz / MIT & collaborators | ❔ Yes (MIT), no data | Generative peptide/protein model on top of Boltz-2. |
-| **Chai-1** | Chai Discovery | ✅ Yes (Apache-2.0) | - |
+| **Chai-1** | Chai Discovery | ✅ Yes (Apache-2.0) | Biologics-only? |
 | **Protenix (“Protein-X”)** | ByteDance | ✅ Yes (Apache-2.0) | - |
 | **HelixFold3** | Baidu | ❔ Yes, non-commercial only | - |
 | **DragonFold** | CHARM Therapeutics | ❌ No (proprietary) | Matches AF3 on small-molecule prediction, used in discovery. |
@@ -55,12 +56,12 @@ Simple inference is the level of "kicking the tires", barely above Hugging Face 
 
 ###  Closed-source: Pearl 
 
-Probably the best closed-source model for small molecules at the moment, released earlier this week. Another giggle: the company renamed from "Genesis Therapeutics" to "Genesis Molecular AI"... Okay, LOL, I see what you did here. 
+Probably the best closed-source model for small molecules at the moment, released earlier this week. Another giggle: the company renamed from "Genesis Therapeutics" to "Genesis Molecular AI"... I see what you did here!
 With the (dire) state of the biotech investment, everyone seems to be cuddling closer and closer to "AI", where investment dollar flows happily. 
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Excited to share Pearl from Genesis Molecular AI (yes, we&#39;ve updated our name!): the first co-folding model to clearly surpass AlphaFold 3 on protein-ligand structure prediction.<br><br>Unlike LLMs that train on vast public data, drug discovery AI faces fundamental data scarcity. Our… <a href="https://t.co/Jmc2FQ65mA">pic.twitter.com/Jmc2FQ65mA</a></p>&mdash; Genesis Molecular AI (@genesistxai) <a href="https://twitter.com/genesistxai/status/1983275689643229286?ref_src=twsrc%5Etfw">October 28, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-As an ex-competitor of theirs, this is certainly interesting to me, since we also focused on small molecules. We were [able to match AF3 but not meaningfully exceeded it](https://charmtx.com/dragon-a-top-performing-structure-prediction-model-for-small-molecule-discovery/). The Genesis crew significantly outperforms AF3 on small-molecule structure prediction. 
+As an ex-competitor of theirs, this is certainly interesting to me: Charm Therapeutics also focused on small molecules. CharmTx DragonFold model was [able to match AF3 but not meaningfully exceeded it](https://charmtx.com/dragon-a-top-performing-structure-prediction-model-for-small-molecule-discovery/). The Genesis crew significantly outperforms AF3 on small-molecule structure prediction. 
 
 The code and model remains closed-source, even to academics/non-commercial users. The [technical report](https://genesis.ml/wp-content/uploads/2025/10/pearl_technical_report.pdf) which accompanied the release is sparse on the details but if you've worked in this field, the subtle nudges within are pretty clear: some mixture of architecture changes, and synthetic data generation.
 
@@ -184,7 +185,7 @@ Many drug targets are partially disordered or undergo conformational changes upo
 
 ## Conclusion and predictions for 2026
 
-This field is currently pretty buzzing or at the very least showing "healthy signs of activity". These models are here to stay, and are quickly becoming the bread-and-butter of discovery. We understand much better where they work and why. 
+This field is currently pretty buzzing or at the very least showing "healthy signs of activity". These models are here to stay, and are quickly becoming the bread-and-butter of discovery. We understand much better where they work and why. However, there are quite of few of them and the differences are to express (commodification at least at the surface level).
 
 Maybe we'll cure all diseases in 10 years – that'd be really awesome – but we probably won't. We need more AF3-like moments for different parts of the drug discovery process. 
 
@@ -200,4 +201,4 @@ Scientists, talk to your tech buddies – tech people talk to your science mates
 
 ## Acknowledgements
 
-Many thanks to Peter Mernyei for his comments on the blog.
+Many thanks to Peter Mernyei & Jenke Scheen for their feedback on this post.
