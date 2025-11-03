@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "State of co-folding 2025"
-date:   2025-10-30 00:00:00 +0100
+date:   2025-11-03 00:00:00 +0100
 categories: cofolding alphafold
 ---
 
