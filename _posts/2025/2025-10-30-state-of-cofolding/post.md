@@ -47,6 +47,7 @@ Simple inference is the level of "kicking the tires", barely above Hugging Face 
 | **Chai-1** | Chai Discovery | ✅ Yes (Apache-2.0) | Biologics-only? |
 | **Protenix (“Protein-X”)** | ByteDance | ✅ Yes (Apache-2.0) | - |
 | **HelixFold3** | Baidu | ❔ Yes, non-commercial only | - |
+| **NeuralPLexer3** | Iambic Tx | ❌ No (proprietary) | - |
 | **DragonFold** | CHARM Therapeutics | ❌ No (proprietary) | Matches AF3 on small-molecule prediction, used in discovery. |
 | **Pearl** | Genesis Molecular AI | ❌ No (proprietary) | Exceeds AF3 on small-molecule prediction, used in discovery. |
 | **OpenFold 3** | OpenFold Consortium | ✅ Yes (preview open-source release) | First open-source re-implementation to match AF3 performance across modalities (RNA, small molecule, biologics). |
