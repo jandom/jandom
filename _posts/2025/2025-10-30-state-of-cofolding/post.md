@@ -122,8 +122,8 @@ Many drug targets are partially disordered or undergo conformational changes upo
 
 **What could work**
 - Synthetic data generation, with careful curation
-    - Molecular dynamics (Genesis, Boltz-2)
-    - From affinity datasets with closely-linked structural data
+    - Molecular dynamics (Boltz-2)
+    - From affinity datasets with closely-linked structural data (Genesis?)
 - Experimental data generation for structure and affinity (OpenBind consortium)
 - Fine-tuning on proprietary data (works better than RAG for these models)
 
@@ -191,7 +191,7 @@ Maybe we'll cure all diseases in 10 years – that'd be really awesome – but w
 Prediction is hard, I was certainly wrong about two major things last year
 
 - I was skeptical of federated learning, yet that strategy seems to be doing pretty well (eg Apheris, OpenFold)
-- I was skeptical of synthetic data via molecular dynamics but that too seems to have done well (Genesis and Boltz have reported on this)
+- I was skeptical of synthetic data via but that too seems to have done well (Genesis and Boltz have reported on this, albeit have taken different strategies)
 
 For 2026, I think we'll see multiple models go beyond AF3, both in terms of capabilities and raw structure prediction performance. People are definitely trying to address the data limitations, both via synthetic data generation and experimentally via initiatives like OpenBind. Targets with little structural data will remain challenging, unless new break-through architectures emerge. 
 
