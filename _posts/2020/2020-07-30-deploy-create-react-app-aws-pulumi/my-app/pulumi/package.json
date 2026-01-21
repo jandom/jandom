@@ -6,9 +6,9 @@
     "mocha": "^10.8.2"
   },
   "dependencies": {
-    "@pulumi/aws": "^3.12.2",
+    "@pulumi/aws": "^7.16.0",
     "@pulumi/awsx": "^0.22.0",
-    "@pulumi/pulumi": "^2.13.2",
+    "@pulumi/pulumi": "^3.216.0",
     "@types/mocha": "^8.0.4",
     "ts-node": "^9.0.0"
   }
