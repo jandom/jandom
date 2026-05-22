@@ -57,4 +57,5 @@ exclude:
   - infra/
   - node_modules/
   - vendor/
+  - venv/
   - _posts/2020/2020-07-30-deploy-create-react-app-aws-pulumi/my-app

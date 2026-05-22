@@ -5,6 +5,8 @@ _drafts
 .jekyll-cache
 .jekyll-metadata
 vendor
+.bundle/
+Gemfile.lock
 blogger
 .pulumi
 node_modules
