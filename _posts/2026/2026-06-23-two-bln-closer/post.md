@@ -38,6 +38,8 @@ Iso basically has a better/similar version of the tech that has been de-risked b
 
 The AlphaFold, or Iso Drug Discovery Engine (as it's gotten new packaging), is mostly relevant to the discovery stage: finding new drug-like molecules and characterizing/improving them early on. It does not help with the development phase (the clinic). No virtual cell, virtual pig (with or without lipstick) or virtual mouse will be of much help there. Biology is really complicated.
 
+That's why you see hiring take up: the org is probably 350-500 people now. If the models are working so great, why would you need so many? Because the models probably mostly cover discovery and development is still subject to the same old medchem grind. 
+
 ## The turmoil
 
 The CEO and CTO departures are probably not good signs. If they weren't a good fit, I guess now would be the time to switch people around. The key departure of John Jumper from DM can't be a good sign for AF3 development between DM and Iso. I guess that's what you get by axing a team to "make Gemini numbers go higher".
