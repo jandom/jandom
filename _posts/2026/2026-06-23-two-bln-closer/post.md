@@ -14,7 +14,7 @@ Few months back, Isomorphic confirmed their rumoured 2bln raise. What could this
 
 The Iso team seems unstoppable at this point. 2bln is more than enough dry powder to get them to clinical trials (more on that later). Their benchmarks look amazing, they're way ahead of everyone, on both small molecules & biologics – never mind the gains in generalization. Everything looks dandy.
 
-## World class discovery team
+## World-class team
 
 I really don't want to understate how well the odds are stacked in Iso's favor. Iso had a great team to start with, then they got some top-notch DeepMind people, and lastly they inherited some of the best people I've worked with (CharmTx crew love!).
 
@@ -58,7 +58,9 @@ Aside from benchmark numbers, which look stunning, we're learning less and less 
 
 Admittedly, Iso are not the only ones. The Boltz team produced a manifesto professing how open they intended to be. The reality didn't really match those glossy visions: VCs want to see a return, and the Boltz team is now more upfront about the role of open-source going forward. I guess, by definition, we're 1-1.5 years closer to seeing what they wanted to release.
 
-> ⚠️ Coming soon: updated evaluation code for Boltz-2!
+
+![coming sooner and sooner](/docs/images/posts/2026-06-23-two-bln-closer/coming-soon-boltz2.png)
+
 
 I certainly won't be holding my breath.
 
@@ -70,7 +72,7 @@ It's really curious to me what's going to happen to the existing competitors and
 There is no OpenAI vs Anthropic here. It's just OpenAI – and it's Iso – everyone else is much smaller. 
 
 Therapeutics
-- small molecule: Genesis Molecular AI, Iambic, etc (danger zone!)
+- small molecule: Genesis Molecular AI, Iambic, etc (danger zone! especially Genesis has a very formidable model but way less resources to push the frontier)
 - biologics: Chai, Xiara
 - both: the spin-out from ByteDance (ProteniX team)
 
