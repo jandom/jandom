@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Two Billions Closer"
-date:   2026-05-22 00:00:00 +0100
+date:   2026-06-23 00:00:00 +0100
 categories: cofolding alphafold openfold chai boltz latent
 ---
 
