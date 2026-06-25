@@ -42,13 +42,13 @@ That's why you see hiring take up: the org is probably 350-500 people now. If th
 
 ## The turmoil
 
-The CEO and CTO departures are probably not good signs. If they weren't a good fit, I guess now would be the time to switch people around. The key departure of John Jumper from DM can't be a good sign for AF3 development between DM and Iso. I guess that's what you get by axing a team to "make Gemini numbers go higher".
+The CEO and CTO departures are probably not good signs. If they weren't a good fit, I guess now would be the time to switch people around. The key departure of John Jumper from DM can't be a good sign for AF3 development between DM and Iso.
 
 ## Khm-khm on the clinic piece
 
 The original announcement was that Iso would enter the clinic in late 2025, then that became mid-2026, now it's late 2026. Whenever that will arrive, it will be a first step to "curing all diseases", and a major point of evaluation for the company. Notably this is a tech-led play at this stage, no pharma company or biotech VC could put that much cash down. 
 
-My sense is that **the question** is being asked more frequently; the question being "when are we going to see the clinical data". Tech VCs may have deep pockets and little idea about discovering drugs but eventually everyone wants to see a return.
+My sense is that **the question** is being asked more frequently; the question being "when are we going to see the clinical data". Tech VCs certainly have deep pockets... but the learning learning of discovering drugs is **steep**... eventually everyone wants to see a return.
 
 # The wrap-up
 
@@ -64,7 +64,7 @@ Admittedly, Iso are not the only ones. The Boltz team produced a manifesto profe
 
 I certainly won't be holding my breath.
 
-This is why projects like OpenFold are so important. The openness is not an aspiration but a foundation. Yeah, the codebase could be better, the docs could be better – and with the help of our amazing community we continue to improve things. But we won't do a bait and switch on you, we literally can't – it's in the name.
+This is why projects like OpenFold are so important. The openness is not an aspiration but a foundation. Yeah, the codebase could be better, the docs could be better – and with the help of our amazing community we continue to improve things. But we won't pull the rug on you, we literally can't – it's in the name.
 
 ## A tide that lifts all boats, huh?
 
@@ -88,4 +88,4 @@ It's a genuinely honorable goal, it really is – in fact more pharmas should ad
 
 However, the 1st step to curing all diseases is curing one. Just N=1, one market approval. So while I admire the goal, telling people that this will be reality in 10 years is a pipe dream (comfortably would bet all my net worth on this, 100x leverage), especially given that we're 5 years in already. 
 
-There is also a steady interest from tech billionaires in funding bio – anywhere from scanning your body with a TV remote, to longevity something something. Those are all directionally fantastic; however, the science is often very bad. So bad. Like "datacenters in space" bad, don't think it'll end well. If only a virtual cell could tell us what happens next!
+There is also a steady interest from tech billionaires in funding bio – anywhere from scanning your body with a TV remote, to longevity (something something). The ambition and direction is fantastic; the science is often not. Funding longevity moonshots is easy; the biology, or physics, doesn't care how big your round was. Like "datacenters in space", I don't think it'll end well. If only a virtual cell could tell us what happens next!
