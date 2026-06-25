@@ -6,7 +6,7 @@ categories: cofolding alphafold openfold chai boltz latent
 ---
 
 
-Few months back, Isomorphic confirmed their rumoured 2bln raise. What could this mean for the field and the broader industry is huge.
+Few months back, Isomorphic confirmed their rumoured 2bln raise. What this could mean for the field and the broader industry is huge.
 
 # The good
 
@@ -48,7 +48,7 @@ The CEO and CTO departures are probably not good signs. If they weren't a good f
 
 The original announcement was that Iso would enter the clinic in late 2025, then that became mid-2026, now it's late 2026. Whenever that will arrive, it will be a first step to "curing all diseases", and a major point of evaluation for the company. Notably this is a tech-led play at this stage, no pharma company or biotech VC could put that much cash down. 
 
-My sense is that **the question** is being asked more frequently; the question being "when are we going to see the clinical data". Tech VCs certainly have deep pockets... but the learning of discovering drugs is **steep**... eventually everyone wants to see a return.
+My sense is that **the question** is being asked more frequently; the question being "when are we going to see the clinical data". Tech VCs certainly have deep pockets... but the learning curve of discovering drugs is **steep**... eventually everyone wants to see a return.
 
 # The wrap-up
 
