@@ -72,7 +72,7 @@ It's really curious to me what's going to happen to the existing competitors and
 There is no OpenAI vs Anthropic here. It's just OpenAI – and it's Iso – everyone else is much smaller. 
 
 Therapeutics
-- small molecule: Genesis Molecular AI, Iambic, etc (danger zone! especially Genesis has a very formidable model but way less resources to push the frontier)
+- small molecule: Genesis Molecular AI, Iambic, etc (danger zone! especially Genesis has a very formidable model but way less resources to push the frontier), some already burried (CharmTx tech RIP ☠️)
 - biologics: Chai, Xiara
 - both: the spin-out from ByteDance (ProteniX team)
 
