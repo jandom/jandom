@@ -48,7 +48,7 @@ The CEO and CTO departures are probably not good signs. If they weren't a good f
 
 The original announcement was that Iso would enter the clinic in late 2025, then that became mid-2026, now it's late 2026. Whenever that will arrive, it will be a first step to "curing all diseases", and a major point of evaluation for the company. Notably this is a tech-led play at this stage, no pharma company or biotech VC could put that much cash down. 
 
-My sense is that **the question** is being asked more frequently; the question being "when are we going to see the clinical data". Tech VCs certainly have deep pockets... but the learning learning of discovering drugs is **steep**... eventually everyone wants to see a return.
+My sense is that **the question** is being asked more frequently; the question being "when are we going to see the clinical data". Tech VCs certainly have deep pockets... but the learning of discovering drugs is **steep**... eventually everyone wants to see a return.
 
 # The wrap-up
 
@@ -72,7 +72,7 @@ It's really curious to me what's going to happen to the existing competitors and
 There is no OpenAI vs Anthropic here. It's just OpenAI – and it's Iso – everyone else is much smaller. 
 
 Therapeutics
-- small molecule: Genesis Molecular AI, Iambic, etc (danger zone! especially Genesis has a very formidable model but way less resources to push the frontier), some already burried (CharmTx tech RIP ☠️)
+- small molecule: Genesis Molecular AI, Iambic, etc (danger zone! especially Genesis has a very formidable model but way less resources to push the frontier), some already buried (CharmTx tech RIP ☠️)
 - biologics: Chai, Xiara
 - both: the spin-out from ByteDance (ProteniX team)
 
