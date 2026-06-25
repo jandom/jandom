@@ -6,7 +6,7 @@ categories: cofolding alphafold openfold chai boltz latent
 ---
 
 
-Few months back, Isomorphic confirmed their rumoured 2bln raise. What this could mean for the field and the broader industry is huge.
+A few months back, Isomorphic confirmed their rumoured 2bln raise. What this could mean for the field and the broader industry is huge.
 
 # The good
 
@@ -80,7 +80,7 @@ SAAS
 - Latent Labs, Boltz, Apheris (the force is strong with this one, they don't care which model is the best!)
 
 Foundational models: 
-- OpenFold, RF3/4, ProteniX v2, ESMFold2 is a new strong player on the block.
+- OpenFold, RF3/4, ProteniX v2, and ESMFold2 – a new strong player on the block.
 
 ## Cure all diseases
 
