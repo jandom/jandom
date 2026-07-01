@@ -69,7 +69,9 @@ This is why projects like OpenFold are so important. The openness is not an aspi
 ## A tide that lifts all boats, huh?
 
 It's really curious to me what's going to happen to the existing competitors and semi-competitors in this space. 
-There is no OpenAI vs Anthropic here. It's just OpenAI – and it's Iso – everyone else is much smaller. 
+There is no OpenAI vs Anthropic here. It's just OpenAI – and it's only Iso – everyone else is much smaller. 
+
+> 2026-07-01: this aged quite poorly, with yesterday's annoucment by Ant that they'll do early-stage discovery. So I guess we have two giants in the room now. 
 
 Therapeutics
 - small molecule: Genesis Molecular AI, Iambic, etc (danger zone! especially Genesis has a very formidable model but way less resources to push the frontier), some already buried (CharmTx tech RIP ☠️)
