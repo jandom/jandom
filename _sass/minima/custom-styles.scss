@@ -1,0 +1,10 @@
+// Site overrides loaded after minima's own styles.
+h1,
+h2,
+h3 {
+  letter-spacing: -0.015em;
+}
+
+.post-content {
+  line-height: 1.65;
+}
