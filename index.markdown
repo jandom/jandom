@@ -9,7 +9,7 @@ title: Jan Domański
 
 Thanks for stopping by! My name is Jan, I'm interested in science (chemistry, biology, physics), computers and math. I'm also a melanoma survivor, which is a reminder to you to go and see a dermatologist regularly.
 
-Currently, i'm working on OpenFold – a fully open-source co-folding model to make sure this innovation is more broadly available for pharma and biotech companies that want to use these tools to advance their pipelines. 
+Currently, i'm working on OpenFold – a project inside Open Molecular Software Foundation (OMSF) – OpenFold is fully open-source co-folding model to make sure this innovation is more broadly available for pharma and biotech companies that want to use these tools to advance their pipelines. 
 
 ## Biography
 
