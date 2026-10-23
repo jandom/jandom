@@ -5,7 +5,8 @@
 title: Jan Domanski
 email: ~
 description: >- # this means to ignore newlines until "baseurl:"
-  "a biochemist with programming skills" CTO and co-founder of a science tech startup @Labstep 🧫 Helps co-organize @HackAndTellLdn a 1000+ tech meetup in London
+  "a biochemist with programming skills" Working on OpenFold, a fully open-source co-folding model, at OMSF.
+  Previously led the team at CharmTx and co-founded Labstep as CTO.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://jandomanski.com" # the base hostname & protocol for your site
 
