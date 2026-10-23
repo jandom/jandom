@@ -7,10 +7,9 @@ A working ruby version that's higher than ubuntu's default
 
 ## Installation
 
-This repo keeps a single `Gemfile` plus one lockfile per platform
-(`Gemfile-linux.lock`, `Gemfile-mac.lock`). After cloning, pick the right one
-by writing it into the local bundler config — every subsequent
-`bundle install` and `bundle exec` then picks it up automatically.
+The repo has a single `Gemfile.lock` covering both Linux and macOS
+(arm64/x86_64). GitHub Pages builds with its own `github-pages` gem and
+ignores the lockfile; it only pins local builds.
 
 ### Ubuntu
 
@@ -20,7 +19,6 @@ Setup jekyll on ubuntu following instructions
 ```bash
     gem install bundler
     bundle config set --local path 'vendor/bundle'
-    bundle config set --local lockfile Gemfile-linux.lock
     bundle install
 ```
 
@@ -32,7 +30,6 @@ The default macOS comes with a ruby interpreter that's very old. Use homebrew to
     brew install ruby@3.4
     gem install bundler
     bundle config set --local path 'vendor/bundle'
-    bundle config set --local lockfile Gemfile-mac.lock
     bundle install
 ```
 
@@ -72,15 +69,13 @@ ruby -r rubygems -e 'require "jekyll-import";
 
 ## Development
 
-To update dependencies for the currently-selected lockfile
+To update dependencies
 
     bundle update
 
-To install dependencies on a clean slate, delete the platform lockfile
-you're targeting and re-resolve, e.g. on macOS:
+To add a new platform to the lockfile (e.g. a new CI runner)
 
-    rm Gemfile-mac.lock
-    bundle install
+    bundle lock --add-platform <platform>
 
 To serve on localhost
 
