@@ -2,8 +2,9 @@
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.description }}, and so on.
 
-title: Jan Domanski
+title: Jan Domański
 email: ~
+tagline: Scientist and engineer
 description: >- # this means to ignore newlines until "baseurl:"
   "a biochemist with programming skills" Working on OpenFold, a fully open-source co-folding model, at OMSF.
   Previously led the team at CharmTx and co-founded Labstep as CTO.
