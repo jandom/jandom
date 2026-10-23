@@ -1,0 +1,30 @@
+version: 2
+
+# Monthly, one grouped PR per directory (version and security updates alike).
+updates:
+  - package-ecosystem: bundler
+    directory: "/"
+    schedule:
+      interval: monthly
+    groups:
+      gems:
+        applies-to: version-updates
+        patterns: ["*"]
+      gems-security:
+        applies-to: security-updates
+        patterns: ["*"]
+
+  - package-ecosystem: npm
+    directories:
+      - "/infra"
+      - "/_posts/2020/2020-07-30-deploy-create-react-app-aws-pulumi/my-app"
+      - "/_posts/2020/2020-07-30-deploy-create-react-app-aws-pulumi/my-app/pulumi"
+    schedule:
+      interval: monthly
+    groups:
+      npm:
+        applies-to: version-updates
+        patterns: ["*"]
+      npm-security:
+        applies-to: security-updates
+        patterns: ["*"]
